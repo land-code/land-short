@@ -10,7 +10,7 @@ const initialValue = {
 function SubmitButton() {
   const { pending } = useFormStatus()
   return (
-    <button type="submit" aria-disabled={pending} className="bg-zinc-200 text-zinc-800 p-2 rounded-xl hover:bg-zinc-400 active:bg-zinc-500">Short</button>
+    <button type="submit" disabled={pending} className={pending ? 'bg-zinc-500 text-zinc-800 p-2 rounded-xl' : 'bg-zinc-200 text-zinc-800 p-2 rounded-xl hover:bg-zinc-400 active:bg-zinc-500'}>Short</button>
   )
 }
 
@@ -30,7 +30,7 @@ export default function ShortenerForm() {
         </span>
         <input required name="username" className="block p-2 rounded-xl bg-zinc-600 text-zinc-200 w-full" placeholder="Introduce your username" />
       </label>
-      <button type="submit" className="bg-zinc-200 text-zinc-800 p-2 rounded-xl hover:bg-zinc-400 active:bg-zinc-500">Short</button>
+      <SubmitButton />
       <p>{state?.message}</p>
     </form>
   )
