@@ -7,7 +7,7 @@ export default function ShortenerForm() {
         <span>
           Link or code:
         </span>
-        <input type="url" required name="long-link" className="block p-2 rounded-xl bg-zinc-600 text-zinc-200 w-full" placeholder="Introduce your long link or code" />
+        <input type="text" required name="long-link" className="block p-2 rounded-xl bg-zinc-600 text-zinc-200 w-full" placeholder="Introduce your long link or code" />
       </label>
       <label className="w-full">
         <span>
