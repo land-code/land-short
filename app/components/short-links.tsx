@@ -8,6 +8,7 @@ export default async function ShortLinks () {
   const {data, error} = await supabase
     .from('short_codes')
     .select('*')
+    .order('created_at', { ascending: true })
   if (error) console.error(error)
   return (
     <div className="w-full border-zinc-600 border-2 rounded-xl sm:p-2">
