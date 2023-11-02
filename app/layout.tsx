@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html className='h-full' lang="es">
       <body className={`${inter.className} h-full`}>
-        <header className='bg-zinc-800 text-white p-2'>
+        <header className='bg-zinc-800 text-white p-4'>
           <h1 className='text-3xl'>
             Land shortener
           </h1>
