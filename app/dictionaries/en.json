@@ -1,0 +1,22 @@
+{
+    "saveLink": "Save your link",
+    "saveLinkForm": {
+        "longLink": {
+            "label": "Link or code:",
+            "placeholder": "Introduce your long link or code"
+        },
+        "username": {
+            "label": "Username:",
+            "placeholder": "Introduce your username"
+        },
+        "submit": "Save"
+    },
+    "savedLinks": "Saved links",
+    "refresh": "Refresh",
+    "savedLinksHeaders": {
+        "name": "Name",
+        "content": "Content",
+        "date": "Date",
+        "time": "Time"
+    }
+}

@@ -3,7 +3,16 @@ import { cookies } from "next/headers";
 import { Database } from "@/database.types";
 import LinkToCopy from "./link-to-copy";
 
-export default async function ShortLinks () {
+export default async function ShortLinks ({
+  dictionary
+}: {
+  dictionary: {
+    name: string;
+    content: string;
+    date: string;
+    time: string;
+  }
+}) {
   const supabase = createServerComponentClient<Database>({ cookies })
   const {data, error} = await supabase
     .from('short_codes')
@@ -15,10 +24,10 @@ export default async function ShortLinks () {
           <table className="table-auto text-center w-full">
             <thead>
               <tr className="hidden sm:table-row">
-                <th>Name</th>
-                <th>Content</th>
-                <th className="hidden sm:table-cell">Date</th>
-                <th className="hidden sm:table-cell">Time</th>
+                <th>{dictionary.name}</th>
+                <th>{dictionary.content}</th>
+                <th className="hidden sm:table-cell">{dictionary.date}</th>
+                <th className="hidden sm:table-cell">{dictionary.time}</th>
               </tr>
             </thead>
             <tbody>

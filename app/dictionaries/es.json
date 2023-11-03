@@ -1,0 +1,22 @@
+{
+    "saveLink": "Guarda tu enlace",
+    "saveLinkForm": {
+        "longLink": {
+            "label": "Enlace o codigo",
+            "placeholder": "Introduce tu enlace o codigo"
+        },
+        "username": {
+            "label": "Nombre:",
+            "placeholder": "Introduce tu nombre"
+        },
+        "submit": "Guardar"
+    },
+    "savedLinks": "Enlaces guardados",
+    "refresh": "Recargar",
+    "savedLinksHeaders": {
+        "name": "Nombre",
+        "content": "Contenido",
+        "date": "Fecha",
+        "time": "Hora"
+    }
+}
