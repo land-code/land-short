@@ -11,7 +11,11 @@ export const shortLink = async (prevState: any, formData: FormData) => {
     const supabase = createServerActionClient<Database>({ cookies })
     const longLink = formData.get('long-link') as string | null || ''
     const name = formData.get('username') as string | null || ''
-    if (!longLink === null && !name) return { message: 'Name and long link not passed'}
+    if (!longLink === null || !name) return { message: 'Name and long link are required'}
+    const { data: { session } } = await supabase
+      .auth
+      .getSession()
+    if (session === null) return { message: 'You are not signed in' }
     const { error } = await supabase
       .from('short_codes')
       .insert({

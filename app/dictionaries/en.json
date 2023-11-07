@@ -18,5 +18,23 @@
         "content": "Content",
         "date": "Date",
         "time": "Time"
+    },
+    "login": "Login",
+    "logout": "Log out",
+    "loginForm": {
+        "email": {
+            "label": "Email: ",
+            "placeholder": "Introduce your email"
+        },
+        "password": {
+            "label": "Password: ",
+            "placeholder": "Introduce your password"
+        },
+        "submit": "Login"
+    },
+    "loginErrors": {
+        "notValid": "Couldn't login. Email and password are not valid",
+        "incorrect": "Email or password are incorrect",
+        "unknown": "An error has ocurred"
     }
 }
