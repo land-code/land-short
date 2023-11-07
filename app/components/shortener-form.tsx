@@ -1,25 +1,11 @@
 'use client'
 
 import { shortLink } from "./short-link"
-import { useFormState, useFormStatus } from "react-dom"
+import { useFormState } from "react-dom"
+import SubmitButton from "./submit-button"
 
 const initialValue = {
   message: null
-}
-
-function SubmitButton({ children }: { children: JSX.Element | string }) {
-  const { pending } = useFormStatus()
-  return (
-    <button
-      type="submit"
-      disabled={pending}
-      className={pending
-        ? 'bg-zinc-500 text-zinc-800 p-2 rounded-xl'
-        : 'bg-zinc-200 text-zinc-800 p-2 rounded-xl hover:bg-zinc-400 active:bg-zinc-500'
-      }>
-        {children}
-      </button>
-  )
 }
 
 export default function ShortenerForm({

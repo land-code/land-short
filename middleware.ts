@@ -5,6 +5,8 @@ import { i18n } from './app/i18n-config'
 
 import { match as matchLocale } from '@formatjs/intl-localematcher'
 import Negotiator from 'negotiator'
+import { createMiddlewareClient } from '@supabase/auth-helpers-nextjs'
+import { Database } from './database.types'
 
 function getLocale(request: NextRequest): string | undefined {
   // Negotiator expects plain object so we need to transform headers
@@ -24,7 +26,7 @@ function getLocale(request: NextRequest): string | undefined {
   return locale
 }
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest, response: NextResponse) {
   const pathname = request.nextUrl.pathname
 
   // // `/_next/` and `/api/` are ignored by the watcher, but we need to ignore files in `public` manually.
@@ -56,6 +58,10 @@ export function middleware(request: NextRequest) {
       )
     )
   }
+  const res = NextResponse.next()
+  const supabase = createMiddlewareClient<Database>({ req: request, res })
+  await supabase.auth.getSession()
+  return res
 }
 
 export const config = {

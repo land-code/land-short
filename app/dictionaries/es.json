@@ -18,5 +18,23 @@
         "content": "Contenido",
         "date": "Fecha",
         "time": "Hora"
+    },
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión",
+    "loginForm": {
+        "email": {
+            "label": "Email: ",
+            "placeholder": "Introduce tu email"
+        },
+        "password": {
+            "label": "Contraseña: ",
+            "placeholder": "Introduce tu contraseña"
+        },
+        "submit": "Iniciar sesión"
+    },
+    "loginErrors": {
+        "notValid": "No se ha podido iniciar sesión. El email y/o la contraseña no son válidas",
+        "incorrect": "El email y/o la contraseña no son correctos",
+        "unknown": "Ha habido un error"
     }
 }
