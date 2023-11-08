@@ -19,7 +19,7 @@ export default async function Home({
       <section className="flex flex-col items-center max-w-full">
         <div className="flex items-center gap-4">
           <h2 className="text-3xl">{dictionary.savedLinks}</h2>
-          <RefreshButton dictionary={{refresh: dictionary.refresh, loading: 'Refreshing'}} />
+          <RefreshButton dictionary={{refresh: dictionary.refresh}} />
         </div>
         <ShortLinks dictionary={dictionary.savedLinksHeaders} />
       </section>
