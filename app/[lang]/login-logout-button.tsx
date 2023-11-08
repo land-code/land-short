@@ -3,7 +3,8 @@ import { createServerComponentClient } from "@supabase/auth-helpers-nextjs"
 import { cookies } from "next/headers"
 import Link from "next/link"
 import { logout } from "@/app/actions/logout"
-import { materialSymbols } from "../fonts/material-symbols"
+import Login from "@/app/icons/login"
+import Logout from "@/app/icons/logout"
 
 const LoginLogoutButton = async ({ dictionary }: {
   dictionary: {
@@ -23,8 +24,9 @@ const LoginLogoutButton = async ({ dictionary }: {
           ? (
             <Link
               href='/login'
-              className="bg-zinc-800 text-xl text-zinc-200 p-2 rounded-xl hover:bg-zinc-500 active:bg-zinc-400"
+              className="flex items-center gap-2 bg-zinc-800 text-xl text-zinc-200 p-2 rounded-xl hover:bg-zinc-500 active:bg-zinc-400"
             >
+              <Login />
               {dictionary.login}
             </Link>)
           : (
@@ -34,7 +36,7 @@ const LoginLogoutButton = async ({ dictionary }: {
                 <button
                   className="flex items-center gap-2 bg-zinc-800 text-xl text-zinc-200 p-2 rounded-xl hover:bg-zinc-500 active:bg-zinc-400"
                 >
-                  <span className={materialSymbols.className}>logout</span>
+                  <Logout />
                   {dictionary.logout}
                 </button>
               </form>
