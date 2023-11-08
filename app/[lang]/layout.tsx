@@ -30,7 +30,9 @@ export default async function RootLayout({
       <body className={`${inter.className} h-full`}>
         <header className='flex justify-between items-center bg-zinc-800 text-white p-4'>
           <h1 className='text-3xl'>
-            Land shortener
+            <Link href='/' className='flex items-center gap-2 bg-zinc-800 text-xl text-zinc-200 p-2 rounded-xl hover:bg-zinc-500 active:bg-zinc-400'>
+              Land shortener
+            </Link>
           </h1>
           <LoginLogoutButton
             dictionary={{ login: dictionary.login, logout: dictionary.logout }} />
