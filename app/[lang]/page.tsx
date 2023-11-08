@@ -1,9 +1,7 @@
 import ShortLinks from "../components/short-links";
 import ShortenerForm from "../components/shortener-form";
-import { refresh } from "../components/refresh";
 import { Locale } from "../i18n-config";
 import { getDictionary } from "../get-dictionary";
-import { MaterialSymbol } from "../icons/material-symbols";
 import RefreshButton from "@/app/components/refresh-button"
 
 export default async function Home({
