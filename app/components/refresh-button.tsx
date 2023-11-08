@@ -8,7 +8,6 @@ const refresh = async () => {
 const RefreshButton = ({ dictionary }: {
   dictionary: {
     refresh: string
-    loading: string
   }
 }) => {
   return (
@@ -18,7 +17,7 @@ const RefreshButton = ({ dictionary }: {
         className="flex items-center gap-2 bg-zinc-800 text-zinc-200 p-2 rounded-xl hover:bg-zinc-500 active:bg-zinc-400"
       >
         <Refresh />
-        {dictionary.loading}
+        {dictionary.refresh}
       </button>
     </form>
   )
