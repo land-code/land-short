@@ -3,6 +3,7 @@ import { useFormState } from "react-dom"
 import { login } from "@/app/actions/login-action"
 import SubmitButton from "./submit-button"
 import { Locale } from "../i18n-config"
+import Login from "@/app/icons/login"
 
 const initialState = {
     message: null
@@ -50,7 +51,10 @@ const LoginForm = ({dictionary, lang}: {
           placeholder={dictionary.password.placeholder} />
       </label>
       <input type="text" className="hidden" name="language" value={lang} readOnly />
-      <SubmitButton>{dictionary.submit}</SubmitButton>
+      <SubmitButton>
+        <Login />
+        {dictionary.submit}
+      </SubmitButton>
       <p>{state?.message}</p>
     </form>
   )

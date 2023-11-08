@@ -1,8 +1,8 @@
 import ShortLinks from "../components/short-links";
 import ShortenerForm from "../components/shortener-form";
-import { refresh } from "../components/refresh";
 import { Locale } from "../i18n-config";
 import { getDictionary } from "../get-dictionary";
+import RefreshButton from "@/app/components/refresh-button"
 
 export default async function Home({
   params: { lang },
@@ -19,14 +19,7 @@ export default async function Home({
       <section className="flex flex-col items-center max-w-full">
         <div className="flex items-center gap-4">
           <h2 className="text-3xl">{dictionary.savedLinks}</h2>
-          <form action={refresh}>
-            <button
-              type="submit"
-              className="bg-zinc-800 text-zinc-200 p-2 rounded-xl hover:bg-zinc-500 active:bg-zinc-400"
-            >
-              {dictionary.refresh}
-            </button>
-          </form>
+          <RefreshButton dictionary={{refresh: dictionary.refresh, loading: 'Refreshing'}} />
         </div>
         <ShortLinks dictionary={dictionary.savedLinksHeaders} />
       </section>

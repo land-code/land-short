@@ -14,6 +14,7 @@
     "@supabase/auth-helpers-nextjs": "^0.8.4",
     "@supabase/supabase-js": "^2.38.4",
     "i18n-config": "^1.1.0",
+    "material-symbols": "^0.13.2",
     "negotiator": "^0.6.3",
     "next": "14.0.2-canary.4",
     "react": "^18",
