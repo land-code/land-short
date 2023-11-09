@@ -2,7 +2,7 @@
 const nextConfig = {
     experimental: {
         serverActions: {
-            allowedForwardedHosts: ['studious-guide-9p59xvwrxjr2jvj-3000.app.github.dev']
+            allowedForwardedHosts: ['https://shiny-invention-9465j565pwr2x97.github.dev']
         }
     }
 }
