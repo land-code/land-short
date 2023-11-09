@@ -10,20 +10,20 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Land shortener',
-  description: 'An easy to use shortener by land-code',
+  description: 'An easy to use shortener by land-code'
 }
 
-export async function generateStaticParams() {
+export async function generateStaticParams (): Promise<Array<{ lang: Locale }>> {
   return i18n.locales.map((locale) => ({ lang: locale }))
 }
 
-export default async function RootLayout({
+export default async function RootLayout ({
   children,
   params: { lang }
 }: {
-  children: React.ReactNode,
+  children: React.ReactNode
   params: { lang: Locale }
-}) {
+}): Promise<JSX.Element> {
   const dictionary = await getDictionary(lang)
   return (
     <html className='h-full' lang={lang}>
@@ -35,7 +35,8 @@ export default async function RootLayout({
             </h1>
           </Link>
           <LoginLogoutButton
-            dictionary={{ login: dictionary.login, logout: dictionary.logout }} />
+            dictionary={{ login: dictionary.login, logout: dictionary.logout }}
+          />
         </header>
         <main className='bg-zinc-200 min-h-full p-2'>
           {children}

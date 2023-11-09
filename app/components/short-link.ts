@@ -1,17 +1,17 @@
 'use server'
 
-import { Database } from "@/database.types"
-import { createServerActionClient } from "@supabase/auth-helpers-nextjs"
-import { cookies } from "next/headers"
-import { isValidUrl } from "../utils/is-valid-url"
-import { revalidatePath, revalidateTag } from "next/cache"
+import { Database } from '@/database.types'
+import { createServerActionClient } from '@supabase/auth-helpers-nextjs'
+import { cookies } from 'next/headers'
+import { isValidUrl } from '../utils/is-valid-url'
+import { revalidatePath } from 'next/cache'
 
-export const shortLink = async (prevState: any, formData: FormData) => {
+export const shortLink = async (prevState: any, formData: FormData): Promise<{ message: string | null } | undefined> => {
   try {
     const supabase = createServerActionClient<Database>({ cookies })
-    const longLink = formData.get('long-link') as string | null || ''
-    const name = formData.get('username') as string | null || ''
-    if (!longLink === null || !name) return { message: 'Name and long link are required'}
+    const longLink = formData.get('long-link') as string | null ?? ''
+    const name = formData.get('username') as string | null ?? ''
+    if (typeof longLink !== 'string' || typeof name !== 'string' || longLink === '' || name === '') return { message: 'Name and long link are required' }
     const { data: { session } } = await supabase
       .auth
       .getSession()
@@ -21,9 +21,9 @@ export const shortLink = async (prevState: any, formData: FormData) => {
       .insert({
         content: longLink,
         is_url: isValidUrl(longLink),
-        name,
+        name
       })
-    if (error) console.error (error)
+    if (error != null) console.error(error)
     revalidatePath('', 'page')
   } catch (err) {
     return {
