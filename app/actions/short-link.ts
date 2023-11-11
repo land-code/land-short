@@ -3,7 +3,7 @@
 import { Database } from '@/database.types'
 import { createServerActionClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
-import { isValidUrl } from '../utils/is-valid-url'
+import { isValidUrl } from '@/app/lib/is-valid-url'
 import { revalidatePath } from 'next/cache'
 
 export const shortLink = async (prevState: any, formData: FormData): Promise<{ message: string | null } | undefined> => {

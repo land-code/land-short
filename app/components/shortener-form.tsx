@@ -1,6 +1,6 @@
 'use client'
 
-import { shortLink } from './short-link'
+import { shortLink } from '../actions/short-link'
 import { useFormState } from 'react-dom'
 import SubmitButton from './submit-button'
 import AddLink from '../icons/add_link'
