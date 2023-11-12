@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 import '@/app/globals.css'
 import { Locale, i18n } from '../i18n-config'
 import Link from 'next/link'
-import LoginLogoutButton from './login-logout-button'
+import LoginLogoutButton from '../components/login-logout-button'
 import { getDictionary } from '../get-dictionary'
 
 const inter = Inter({ subsets: ['latin'] })
