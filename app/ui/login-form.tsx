@@ -25,17 +25,17 @@ const LoginForm = ({ dictionary, lang }: {
 }): JSX.Element => {
   const [state, formAction] = useFormState(login, initialState)
   return (
-    <form action={formAction} className='bg-zinc-800 text-zinc-200 p-4 rounded-xl flex flex-col items-center gap-2 w-[500px] max-w-full'>
+    <form action={formAction} className='bg-zinc-800 text-zinc-200 p-4 rounded-xl flex flex-col items-center gap-2 w-[500px] max-w-full dark:bg-zinc-600'>
       <label className='w-full'>
         <span>
           {dictionary.email.label}
         </span>
         <input
           type='email'
-          autoComplete='username'
+          autoComplete='email'
           required
           name='email'
-          className='block p-2 rounded-xl bg-zinc-600 text-zinc-200 w-full'
+          className='block p-2 rounded-xl bg-zinc-600 text-zinc-200 w-full dark:bg-zinc-800'
           placeholder={dictionary.email.placeholder}
         />
       </label>
@@ -48,7 +48,7 @@ const LoginForm = ({ dictionary, lang }: {
           type='password'
           autoComplete='current-password'
           name='password'
-          className='block p-2 rounded-xl bg-zinc-600 text-zinc-200 w-full'
+          className='block p-2 rounded-xl bg-zinc-600 text-zinc-200 w-full dark:bg-zinc-800'
           placeholder={dictionary.password.placeholder}
         />
       </label>

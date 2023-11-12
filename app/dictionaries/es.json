@@ -46,5 +46,6 @@
         "unknown": "Ha habido un error",
         "notFound": "No se ha encontrado el enlace",
         "redirectingTo": "Redirigiendo a "
-    }
+    },
+    "copiedToClipboard": "Contenido copiado al portapapeles"
 }

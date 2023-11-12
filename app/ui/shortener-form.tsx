@@ -29,12 +29,12 @@ export default function ShortenerForm ({
 }): JSX.Element {
   const [state, formAction] = useFormState(shortLink, initialState)
   return (
-    <form action={formAction} className='bg-zinc-800 text-zinc-200 p-4 rounded-xl flex flex-col items-center gap-2 w-[500px] max-w-full'>
+    <form action={formAction} className='bg-zinc-800 text-zinc-200 p-4 rounded-xl flex flex-col items-center gap-2 w-[500px] max-w-full dark:bg-zinc-600'>
       <label className='w-full'>
         <span>
           {dictionary.longLink.label}
         </span>
-        <input type='text' required name='long-link' className='block p-2 rounded-xl bg-zinc-600 text-zinc-200 w-full' placeholder={dictionary.longLink.placeholder} />
+        <input autoComplete='off' type='text' required name='long-link' className='block p-2 rounded-xl bg-zinc-600 text-zinc-200 w-full dark:bg-zinc-800' placeholder={dictionary.longLink.placeholder} />
       </label>
       <label className='w-full'>
         <span>
@@ -42,7 +42,7 @@ export default function ShortenerForm ({
         </span>
         <div className='flex items-center'>
           <span>https://land-short.vercel.app/</span>
-          <input required name='code' className='block p-2 rounded-xl bg-zinc-600 text-zinc-200' placeholder={dictionary.code.placeholder} />
+          <input required name='code' className='block p-2 rounded-xl bg-zinc-600 text-zinc-200 dark:bg-zinc-800' placeholder={dictionary.code.placeholder} />
         </div>
         <input readOnly className='hidden' type='text' name='language' value={language} />
       </label>
