@@ -24,7 +24,7 @@ const LoginLogoutButton = async ({ dictionary }: {
             ? (
               <Link
                 href='/login'
-                className='flex items-center gap-2 bg-zinc-800 text-xl text-zinc-200 p-2 rounded-xl hover:bg-zinc-500 active:bg-zinc-400'
+                className='flex items-center gap-2 text-xl text-zinc-200 p-2 rounded-xl hover:bg-zinc-500 active:bg-zinc-400'
               >
                 <Login />
                 {dictionary.login}
@@ -35,7 +35,7 @@ const LoginLogoutButton = async ({ dictionary }: {
                 {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
                 <form action={logout}>
                   <button
-                    className='flex items-center gap-2 bg-zinc-800 text-xl text-zinc-200 p-2 rounded-xl hover:bg-zinc-500 active:bg-zinc-400'
+                    className='flex items-center gap-2 text-xl text-zinc-200 p-2 rounded-xl hover:bg-zinc-500 active:bg-zinc-400'
                   >
                     <Logout />
                     {dictionary.logout}
