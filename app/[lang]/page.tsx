@@ -1,8 +1,8 @@
-import ShortLinks from '../components/short-links'
-import ShortenerForm from '../components/shortener-form'
+import ShortLinks from '../ui/short-links'
+import ShortenerForm from '../ui/shortener-form'
 import { Locale } from '../i18n-config'
 import { getDictionary } from '../get-dictionary'
-import RefreshButton from '@/app/components/refresh-button'
+import RefreshButton from '@/app/ui/refresh-button'
 
 export default async function Home ({
   params: { lang }
