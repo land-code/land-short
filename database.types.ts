@@ -16,6 +16,7 @@ export interface Database {
           id: number
           is_url: boolean
           name: string
+          username: string | null
         }
         Insert: {
           content?: string | null
@@ -23,6 +24,7 @@ export interface Database {
           id?: number
           is_url?: boolean
           name: string
+          username?: string | null
         }
         Update: {
           content?: string | null
@@ -30,8 +32,17 @@ export interface Database {
           id?: number
           is_url?: boolean
           name?: string
+          username?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "short_codes_username_fkey"
+            columns: ["username"]
+            isOneToOne: false
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
       }
     }
     Views: {

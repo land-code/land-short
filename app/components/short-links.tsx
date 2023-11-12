@@ -11,6 +11,7 @@ export default async function ShortLinks ({
     content: string
     date: string
     time: string
+    code: string
   }
 }): Promise<JSX.Element> {
   const supabase = createServerComponentClient<Database>({ cookies })
@@ -24,7 +25,7 @@ export default async function ShortLinks ({
       <table className='table-auto text-center w-full'>
         <thead>
           <tr className='hidden sm:table-row'>
-            <th>{dictionary.name}</th>
+            <th>{dictionary.code}</th>
             <th>{dictionary.content}</th>
             <th className='hidden sm:table-cell'>{dictionary.date}</th>
             <th className='hidden sm:table-cell'>{dictionary.time}</th>

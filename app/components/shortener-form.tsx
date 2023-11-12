@@ -6,23 +6,26 @@ import SubmitButton from './submit-button'
 import AddLink from '../icons/add_link'
 
 const initialState = {
-  message: null
+  message: null,
+  link: null
 }
 
 export default function ShortenerForm ({
-  dictionary
+  dictionary,
+  language
 }: {
   dictionary: {
     longLink: {
       label: string
       placeholder: string
     }
-    username: {
+    code: {
       label: string
       placeholder: string
     }
     submit: string
   }
+  language: string
 }): JSX.Element {
   const [state, formAction] = useFormState(shortLink, initialState)
   return (
@@ -35,15 +38,26 @@ export default function ShortenerForm ({
       </label>
       <label className='w-full'>
         <span>
-          {dictionary.username.label}
+          {dictionary.code.label}
         </span>
-        <input required name='username' className='block p-2 rounded-xl bg-zinc-600 text-zinc-200 w-full' placeholder={dictionary.username.placeholder} />
+        <div className='flex items-center'>
+          <span>https://land-short.vercel.app/</span>
+          <input required name='code' className='block p-2 rounded-xl bg-zinc-600 text-zinc-200' placeholder={dictionary.code.placeholder} />
+        </div>
+        <input readOnly className='hidden' type='text' name='language' value={language} />
       </label>
       <SubmitButton>
         <AddLink />
         {dictionary.submit}
       </SubmitButton>
-      <p>{state?.message}</p>
+      <p className='text-red-300'>{state?.message}</p>
+      {(state?.link !== null && state?.link !== '') &&
+        <p>
+          <span>Link: </span>
+          <a href={state?.link ?? '#'}>
+            {state?.link}
+          </a>
+        </p>}
     </form>
   )
 }

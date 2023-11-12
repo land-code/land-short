@@ -5,9 +5,9 @@
             "label": "Enlace o codigo",
             "placeholder": "Introduce tu enlace o codigo"
         },
-        "username": {
-            "label": "Nombre:",
-            "placeholder": "Introduce tu nombre"
+        "code": {
+            "label": "Enlace corto:",
+            "placeholder": "Introduce tu enlace corto"
         },
         "submit": "Guardar"
     },
@@ -17,7 +17,8 @@
         "name": "Nombre",
         "content": "Contenido",
         "date": "Fecha",
-        "time": "Hora"
+        "time": "Hora",
+        "code": "Código"
     },
     "login": "Iniciar sesión",
     "logout": "Cerrar sesión",
@@ -36,5 +37,14 @@
         "notValid": "No se ha podido iniciar sesión. El email y/o la contraseña no son válidas",
         "incorrect": "El email y/o la contraseña no son correctos",
         "unknown": "Ha habido un error"
+    },
+    "sessionErrors": {
+        "notSignedIn": "No has iniciado sesión"
+    },
+    "shortLinkErrors": {
+        "codeNotUnique": "El código ya existe",
+        "unknown": "Ha habido un error",
+        "notFound": "No se ha encontrado el enlace",
+        "redirectingTo": "Redirigiendo a "
     }
 }

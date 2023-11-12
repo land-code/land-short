@@ -14,7 +14,7 @@ export default async function Home ({
     <div className='flex flex-col items-center gap-4'>
       <section className='flex flex-col items-center max-w-full'>
         <h2 className='text-3xl'>{dictionary.saveLink}</h2>
-        <ShortenerForm dictionary={dictionary.saveLinkForm} />
+        <ShortenerForm dictionary={dictionary.saveLinkForm} language={lang} />
       </section>
       <section className='flex flex-col items-center max-w-full'>
         <div className='flex items-center gap-4'>
