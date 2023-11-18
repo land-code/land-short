@@ -18,7 +18,9 @@
         "content": "Content",
         "date": "Date",
         "time": "Time",
-        "code": "Code"
+        "code": "Code",
+        "actions": "Actions",
+        "delete": "Delete"
     },
     "login": "Login",
     "logout": "Log out",

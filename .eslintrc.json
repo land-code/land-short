@@ -7,5 +7,16 @@
     "ecmaVersion": "latest",
     "sourceType": "module",
     "project": "./tsconfig.json"
-  }
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.ts",
+        "*.tsx"
+      ],
+      "rules": {
+        "@typescript-eslint/no-misused-promises": "off"
+      }
+    }
+  ]
 }

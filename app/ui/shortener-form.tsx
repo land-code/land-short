@@ -4,6 +4,7 @@ import { shortLink } from '../actions/short-link'
 import { useFormState } from 'react-dom'
 import SubmitButton from './submit-button'
 import AddLink from '../icons/add_link'
+import { BASE_URL } from '../lib/consts'
 
 const initialState = {
   message: null,
@@ -12,7 +13,8 @@ const initialState = {
 
 export default function ShortenerForm ({
   dictionary,
-  language
+  language,
+  userId
 }: {
   dictionary: {
     longLink: {
@@ -26,10 +28,11 @@ export default function ShortenerForm ({
     submit: string
   }
   language: string
+  userId: string
 }): JSX.Element {
   const [state, formAction] = useFormState(shortLink, initialState)
   return (
-    <form action={formAction} className='bg-zinc-800 text-zinc-200 p-4 rounded-xl flex flex-col items-center gap-2 w-[500px] max-w-full dark:bg-zinc-600'>
+    <form action={formAction} className='bg-zinc-800 text-zinc-200 p-4 rounded-xl flex flex-col items-center gap-2 w-full dark:bg-zinc-600'>
       <label className='w-full'>
         <span>
           {dictionary.longLink.label}
@@ -40,11 +43,12 @@ export default function ShortenerForm ({
         <span>
           {dictionary.code.label}
         </span>
-        <div className='flex items-center'>
-          <span>https://land-short.vercel.app/</span>
-          <input required name='code' className='block p-2 rounded-xl bg-zinc-600 text-zinc-200 dark:bg-zinc-800' placeholder={dictionary.code.placeholder} />
+        <div className='flex items-center flex-wrap'>
+          <span className='w-max'>{BASE_URL}</span>
+          <input required name='code' className='flex-grow p-2 rounded-xl bg-zinc-600 text-zinc-200 dark:bg-zinc-800' placeholder={dictionary.code.placeholder} />
         </div>
         <input readOnly className='hidden' type='text' name='language' value={language} />
+        <input readOnly className='hidden' type='text' name='username' value={userId} />
       </label>
       <SubmitButton>
         <AddLink />

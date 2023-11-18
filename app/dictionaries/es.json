@@ -18,7 +18,9 @@
         "content": "Contenido",
         "date": "Fecha",
         "time": "Hora",
-        "code": "Código"
+        "code": "Código",
+        "actions": "Acciones",
+        "delete": "Eliminar"
     },
     "login": "Iniciar sesión",
     "logout": "Cerrar sesión",
