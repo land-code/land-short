@@ -18,7 +18,9 @@ const RefreshButton = ({ dictionary }: {
         className='flex items-center gap-2 bg-zinc-800 text-zinc-200 p-2 rounded-xl hover:bg-zinc-500 active:bg-zinc-400 dark:bg-zinc-600'
       >
         <Refresh />
-        {dictionary.refresh}
+        <span className='sr-only sm:not-sr-only'>
+          {dictionary.refresh}
+        </span>
       </button>
     </form>
   )

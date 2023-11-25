@@ -29,9 +29,9 @@ export default async function RootLayout ({
   const dictionary = await getDictionary(lang)
   return (
     <html className='h-full' lang={lang}>
-      <body className={`${inter.className} h-full`}>
+      <body className={`${inter.className} flex flex-col h-full`}>
         <ToastProvider>
-          <header className='flex justify-between items-center bg-zinc-800 text-white p-2 dark:bg-zinc-900'>
+          <header className='flex flex-wrap justify-center items-center bg-zinc-800 text-white p-2 sm:justify-between dark:bg-zinc-900'>
             <Link href='/' className='flex items-center gap-2 text-xl text-zinc-200 p-2 rounded-xl hover:bg-zinc-500 active:bg-zinc-400'>
               <h1 className='text-3xl'>
                 Land shortener
@@ -41,7 +41,7 @@ export default async function RootLayout ({
               dictionary={{ login: dictionary.login, logout: dictionary.logout }}
             />
           </header>
-          <main className='bg-zinc-200 min-h-full p-2 dark:bg-zinc-800 dark:text-zinc-200'>
+          <main className='bg-zinc-200 flex-grow p-2 dark:bg-zinc-800 dark:text-zinc-200'>
             {children}
             <ToastContainer />
           </main>

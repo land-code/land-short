@@ -25,8 +25,8 @@ export default function LinkToCopy ({
     <>
       {
         isUrl
-          ? <a className='block max-w-xs w-max overflow-hidden whitespace-nowrap text-ellipsis text-zinc-600 underline dark:text-zinc-300' href={content ?? undefined}>{content}</a>
-          : <button onClick={() => copyLink(content ?? '')} className='block max-w-xs overflow-hidden whitespace-nowrap text-ellipsis'>{content}</button>
+          ? <a className='block max-w-[15rem] w-max overflow-hidden whitespace-nowrap text-ellipsis text-zinc-600 underline sm:max-w-xs dark:text-zinc-300' href={content ?? undefined}>{content}</a>
+          : <button onClick={() => copyLink(content ?? '')} className='block max-w-[15rem] overflow-hidden whitespace-nowrap text-ellipsis sm:max-w-xs'>{content}</button>
       }
     </>
   )
