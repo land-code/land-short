@@ -11,7 +11,7 @@ interface ToastProps {
 }
 
 interface ToastNotification {
-  showToast: (message: string, options: { duration: number }) => void
+  showToast: (message: string, options?: { duration: number }) => void
   ToastContainer: ({ maxItems }: { maxItems?: number }) => JSX.Element
 }
 

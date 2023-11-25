@@ -2,8 +2,7 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { Database } from '@/database.types'
 import LinkToCopy from './link-to-copy'
-import { revalidatePath } from 'next/cache'
-import DeleteIcon from '../icons/delete'
+import DeleteLinkButton from './delete-link-button'
 
 export default async function ShortLinks ({
   dictionary
@@ -26,19 +25,6 @@ export default async function ShortLinks ({
     .order('created_at', { ascending: false })
   if (error != null) console.error(error)
 
-  const deleteShortLink = async (formData: FormData): Promise<void> => {
-    'use server'
-    console.log('hello')
-    const id = formData.get('id') ?? '' as string
-    const cookieStore = cookies()
-    const supabase = createServerComponentClient<Database>({ cookies: () => cookieStore })
-    const { error } = await supabase
-      .from('short_codes')
-      .delete()
-      .eq('id', id)
-    if (error !== null) console.error(error)
-    revalidatePath('/', 'page')
-  }
   return (
     <div className='w-full border-zinc-600 border-2 rounded-xl sm:p-2 dark:border-0 dark:bg-zinc-600'>
       <table className='table-auto text-center w-full'>
@@ -66,13 +52,7 @@ export default async function ShortLinks ({
                   <td>{date.toDateString()}</td>
                   <td className='border-b-2 border-zinc-800 sm:border-0'>{date.toLocaleTimeString()}</td>
                   <td>
-                    <form action={deleteShortLink}>
-                      <input className='hidden' name='id' value={id} readOnly />
-                      <button className='flex' type='submit'>
-                        <DeleteIcon />
-                        {dictionary.delete}
-                      </button>
-                    </form>
+                    <DeleteLinkButton dictionary={{ delete: dictionary.delete }} id={id} />
                   </td>
                 </tr>
               )
