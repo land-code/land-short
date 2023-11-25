@@ -49,5 +49,8 @@
         "notFound": "No se ha encontrado el enlace",
         "redirectingTo": "Redirigiendo a "
     },
+    "deleteLinkErrors": {
+        "success": "Enlace eliminado correctamente"
+    },
     "copiedToClipboard": "Contenido copiado al portapapeles"
 }
