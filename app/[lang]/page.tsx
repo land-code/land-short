@@ -7,7 +7,7 @@ import { Database } from '@/database.types'
 import { cookies } from 'next/headers'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 
-export default async function Home({
+export default async function Home ({
   params: { lang }
 }: {
   params: { lang: Locale }
