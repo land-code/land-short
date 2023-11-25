@@ -7,6 +7,7 @@ import LoginLogoutButton from '../ui/login-logout-button'
 import { getDictionary } from '../get-dictionary'
 import ToastContainer from '../ui/toast-container'
 import { ToastProvider } from '../lib/use-toast'
+import dynamic from 'next/dynamic'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -27,6 +28,10 @@ export default async function RootLayout ({
   params: { lang: Locale }
 }): Promise<JSX.Element> {
   const dictionary = await getDictionary(lang)
+  const SwitchThemeButton = dynamic(
+    async () => await import('../ui/switch-theme-button'),
+    { ssr: false }
+  )
   return (
     <html className='h-full' lang={lang}>
       <body className={`${inter.className} flex flex-col h-full`}>
@@ -37,6 +42,7 @@ export default async function RootLayout ({
                 Land shortener
               </h1>
             </Link>
+            <SwitchThemeButton />
             <LoginLogoutButton
               dictionary={{ login: dictionary.login, logout: dictionary.logout }}
             />
