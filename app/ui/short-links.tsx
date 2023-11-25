@@ -3,9 +3,11 @@ import { cookies } from 'next/headers'
 import { Database } from '@/database.types'
 import LinkToCopy from './link-to-copy'
 import DeleteLinkButton from './delete-link-button'
+import { Locale } from '../i18n-config'
 
 export default async function ShortLinks ({
-  dictionary
+  dictionary,
+  language
 }: {
   dictionary: {
     name: string
@@ -17,6 +19,7 @@ export default async function ShortLinks ({
     actions: string
     delete: string
   }
+  language: Locale
 }): Promise<JSX.Element> {
   const supabase = createServerComponentClient<Database>({ cookies })
   const { data, error } = await supabase
@@ -52,7 +55,7 @@ export default async function ShortLinks ({
                   <td>{date.toDateString()}</td>
                   <td className='border-b-2 border-zinc-800 sm:border-0'>{date.toLocaleTimeString()}</td>
                   <td>
-                    <DeleteLinkButton dictionary={{ delete: dictionary.delete }} id={id} />
+                    <DeleteLinkButton language={language} dictionary={{ delete: dictionary.delete }} id={id} />
                   </td>
                 </tr>
               )

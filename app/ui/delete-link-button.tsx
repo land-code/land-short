@@ -4,34 +4,40 @@ import { useFormState, useFormStatus } from 'react-dom'
 import DeleteIcon from '../icons/delete'
 import { useToast } from '../lib/use-toast'
 import { useEffect } from 'react'
-
-const initialValue: DeleteShortLinkState = {
-  message: null
-}
+import { Locale } from '../i18n-config'
 
 export default function DeleteLinkButton ({
   id,
-  dictionary
+  dictionary,
+  language
 }: {
   id: number
   dictionary: {
     delete: string
   }
+  language: Locale
 }): JSX.Element {
+  const initialValue: DeleteShortLinkState = {
+    message: null,
+    language
+  }
+
   const [state, action] = useFormState(deleteShortLink, initialValue)
   const { pending } = useFormStatus()
   const { showToast } = useToast()
-  // show toast when message is not null
+
   useEffect(() => {
-    if (state.message !== null && !pending) showToast(state.message)
-    console.log()
+    if (state.message !== null && !pending) {
+      showToast(state.message)
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state, pending])
 
   return (
     <form action={action}>
       <input className='hidden' name='id' value={id} readOnly />
-      <button className='flex' type='submit'>
+      <input className='hidden' name='language' value={language} readOnly />
+      <button className='flex p-1 rounded-xl hover:bg-zinc-500 active:bg-zinc-400' type='submit'>
         <DeleteIcon />
         {dictionary.delete}
       </button>

@@ -21,13 +21,13 @@ export default function Toast ({
     toastRef.current?.classList.add('animate-fade-out')
   }
   useEffect(() => {
-    if (!isHover) {
+    if (!isHover || !show) {
       const timer = setTimeout(() => {
         closeToast()
       }, duration)
       return () => clearTimeout(timer)
     }
-  }, [duration, isHover])
+  }, [duration, isHover, show])
   return (
     <div
       onMouseEnter={() => setIsHover(true)}

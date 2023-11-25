@@ -5,21 +5,28 @@ import { getDictionary } from '../get-dictionary'
 import { createServerActionClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { Database } from '@/database.types'
+import { Locale } from '../i18n-config'
 
 export interface DeleteShortLinkState {
   message: string | null
+  language: Locale
 }
 
 export const deleteShortLink = async (prevState: any, formData: FormData): Promise<DeleteShortLinkState> => {
-  const dictionary = await getDictionary('en')
+  const { language } = prevState
   const schema = z.object({
     id: z.string()
   })
   const validatedData = schema.safeParse({
     id: formData.get('id')
   })
+  const dictionary = await getDictionary(language ?? 'en')
+
   if (!validatedData.success) {
-    return { message: dictionary.shortLinkErrors.notFound }
+    return {
+      ...prevState,
+      message: dictionary.shortLinkErrors.notFound
+    }
   }
 
   const cookieStore = cookies()
@@ -28,7 +35,10 @@ export const deleteShortLink = async (prevState: any, formData: FormData): Promi
     .auth
     .getSession()
   if (session === null) {
-    return { message: dictionary.sessionErrors.notSignedIn }
+    return {
+      ...prevState,
+      message: dictionary.sessionErrors.notSignedIn
+    }
   }
   const { data } = await supabase
     .from('short_codes')
@@ -36,7 +46,10 @@ export const deleteShortLink = async (prevState: any, formData: FormData): Promi
     .eq('id', validatedData.data.id)
   if (data === null) {
     console.log(validatedData)
-    return { message: dictionary.shortLinkErrors.notFound }
+    return {
+      ...prevState,
+      message: dictionary.shortLinkErrors.notFound
+    }
   }
   const { error } = await supabase
     .from('short_codes')
@@ -44,7 +57,13 @@ export const deleteShortLink = async (prevState: any, formData: FormData): Promi
     .eq('id', validatedData.data.id)
   if (error !== null) {
     console.error(error)
-    return { message: dictionary.shortLinkErrors.unknown }
+    return {
+      ...prevState,
+      message: dictionary.shortLinkErrors.unknown
+    }
   }
-  return { message: 'Successfully deleted short link.' }
+  return {
+    ...prevState,
+    message: 'Successfully deleted short link.'
+  }
 }

@@ -29,10 +29,12 @@ export default async function Home ({
           <h2 className='text-3xl'>{dictionary.savedLinks}</h2>
           <RefreshButton dictionary={{ refresh: dictionary.refresh }} />
         </div>
-        <ShortLinks dictionary={{
-          ...dictionary.savedLinksHeaders,
-          copiedToClipboard: dictionary.copiedToClipboard
-        }}
+        <ShortLinks
+          dictionary={{
+            ...dictionary.savedLinksHeaders,
+            copiedToClipboard: dictionary.copiedToClipboard
+          }}
+          language={lang}
         />
       </section>
     </div>
