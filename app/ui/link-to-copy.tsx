@@ -1,7 +1,6 @@
 'use client'
 
-import { useState } from 'react'
-import Toast from './toast'
+import { useToast } from '../lib/use-toast'
 
 export default function LinkToCopy ({
   isUrl,
@@ -14,12 +13,11 @@ export default function LinkToCopy ({
     copiedToClipboard: string
   }
 }): JSX.Element {
-  const [isToastShow, setIsToastShow] = useState(false)
+  const { showToast } = useToast()
   const copyLink = (link: string): void => {
     navigator.clipboard.writeText(link)
       .then(() => {
-        setIsToastShow(true)
-        setTimeout(() => setIsToastShow(false), 3000)
+        showToast(dictionary.copiedToClipboard, { duration: 3000 })
       })
       .catch(error => console.error(error))
   }
@@ -30,7 +28,6 @@ export default function LinkToCopy ({
           ? <a className='block max-w-xs w-max overflow-hidden whitespace-nowrap text-ellipsis text-zinc-600 underline dark:text-zinc-300' href={content ?? undefined}>{content}</a>
           : <button onClick={() => copyLink(content ?? '')} className='block max-w-xs overflow-hidden whitespace-nowrap text-ellipsis'>{content}</button>
       }
-      <Toast show={isToastShow} message={dictionary.copiedToClipboard} />
     </>
   )
 }

@@ -18,7 +18,9 @@
         "content": "Content",
         "date": "Date",
         "time": "Time",
-        "code": "Code"
+        "code": "Code",
+        "actions": "Actions",
+        "delete": "Delete"
     },
     "login": "Login",
     "logout": "Log out",
@@ -46,7 +48,9 @@
         "unknown":"An error has ocurred",
         "notFound": "The link was not found",
         "redirectingTo": "Redirecting to "
-
+    },
+    "deleteLinkErrors": {
+        "success": "Successfully deleted short link."
     },
     "copiedToClipboard": "Content copied to clipboard"
 }

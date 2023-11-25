@@ -14,6 +14,7 @@ interface FormState {
 }
 export const shortLink = async (prevState: FormState | undefined, formData: FormData): Promise<FormState | undefined> => {
   const language = formData.get('language') as Locale | null ?? 'en'
+  const userId = formData.get('username') as string | null ?? ''
   const dictionary = await getDictionary(language)
   try {
     const supabase = createServerActionClient<Database>({ cookies })
@@ -39,7 +40,8 @@ export const shortLink = async (prevState: FormState | undefined, formData: Form
       .insert({
         content: longLink,
         is_url: isValidUrl(longLink),
-        name: code
+        name: code,
+        username: userId
       })
     if (error?.code === '23505') {
       return {
@@ -47,7 +49,13 @@ export const shortLink = async (prevState: FormState | undefined, formData: Form
         message: dictionary.shortLinkErrors.codeNotUnique
       }
     }
-    if (error !== null) console.error(error)
+    if (error !== null) {
+      console.error(error)
+      return {
+        ...prevState,
+        message: dictionary.shortLinkErrors.unknown
+      }
+    }
     revalidatePath('', 'page')
     return {
       link: `https://land-short.vercel.app/${code}`
