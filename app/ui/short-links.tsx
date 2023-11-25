@@ -53,8 +53,8 @@ export default async function ShortLinks ({
                     </div>
                   </td>
                   <td>{date.toDateString()}</td>
-                  <td className='border-b-2 border-zinc-800 sm:border-0'>{date.toLocaleTimeString()}</td>
-                  <td>
+                  <td>{date.toLocaleTimeString()}</td>
+                  <td className='flex justify-center border-b-2 border-zinc-800 sm:border-0'>
                     <DeleteLinkButton language={language} dictionary={{ delete: dictionary.delete }} id={id} />
                   </td>
                 </tr>
