@@ -38,9 +38,9 @@ export async function middleware (request: NextRequest, response: NextResponse):
       '/diamante-edixgal.zip'
       // Your other files in `public`
     ].includes(pathname)
-  )
-    return
-
+  ) {
+    return NextResponse.next()
+  }
   // Check if there is any supported locale in the pathname
   const pathnameIsMissingLocale = i18n.locales.every(
     (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
