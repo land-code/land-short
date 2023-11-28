@@ -31,15 +31,16 @@ export async function middleware (request: NextRequest, response: NextResponse):
 
   // // `/_next/` and `/api/` are ignored by the watcher, but we need to ignore files in `public` manually.
   // // If you have one
-  // if (
-  //   [
-  //     '/manifest.json',
-  //     '/favicon.ico',
-  //     // Your other files in `public`
-  //   ].includes(pathname)
-  // )
-  //   return
-
+  if (
+    [
+      '/manifest.json',
+      '/favicon.ico',
+      '/diamante-edixgal.zip'
+      // Your other files in `public`
+    ].includes(pathname)
+  ) {
+    return NextResponse.next()
+  }
   // Check if there is any supported locale in the pathname
   const pathnameIsMissingLocale = i18n.locales.every(
     (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
