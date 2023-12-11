@@ -15,7 +15,7 @@ const RefreshButton = ({ dictionary }: {
     <form action={refresh}>
       <button
         type='submit'
-        className='flex items-center gap-2 bg-zinc-800 text-zinc-200 p-2 rounded-xl hover:bg-zinc-500 active:bg-zinc-400 dark:bg-zinc-600'
+        className='flex items-center gap-2 bg-zinc-800 text-zinc-200 p-2 rounded-full hover:bg-zinc-500 active:bg-zinc-400 dark:bg-zinc-600'
       >
         <Refresh />
         <span className='sr-only sm:not-sr-only'>
