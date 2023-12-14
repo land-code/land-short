@@ -32,7 +32,7 @@ export default async function RootLayout ({
       <body className={`${inter.className} flex flex-col h-full`}>
         <ToastProvider>
           <header className='flex flex-wrap justify-center items-center bg-zinc-800 text-white p-2 sm:justify-between dark:bg-zinc-900'>
-            <Link href='/' className='flex items-center gap-2 text-xl text-zinc-200 p-2 rounded-xl hover:bg-zinc-500 active:bg-zinc-400'>
+            <Link href='/' className='flex items-center gap-2 text-xl text-zinc-200 p-2 rounded-full hover:bg-zinc-500 active:bg-zinc-400'>
               <h1 className='text-3xl'>
                 Land shortener
               </h1>
