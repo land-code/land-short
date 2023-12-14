@@ -18,7 +18,8 @@
     "negotiator": "^0.6.3",
     "next": "14.0.2-canary.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@types/negotiator": "^0.6.2",

@@ -5,9 +5,9 @@
             "label": "Link or code:",
             "placeholder": "Introduce your long link or code"
         },
-        "username": {
-            "label": "Username:",
-            "placeholder": "Introduce your username"
+        "code": {
+            "label": "Short link:",
+            "placeholder": "Introduce your short link"
         },
         "submit": "Save"
     },
@@ -17,7 +17,10 @@
         "name": "Name",
         "content": "Content",
         "date": "Date",
-        "time": "Time"
+        "time": "Time",
+        "code": "Code",
+        "actions": "Actions",
+        "delete": "Delete"
     },
     "login": "Login",
     "logout": "Log out",
@@ -36,5 +39,18 @@
         "notValid": "Couldn't login. Email and password are not valid",
         "incorrect": "Email or password are incorrect",
         "unknown": "An error has ocurred"
-    }
+    },
+    "sessionErrors": {
+        "notSignedIn": "You are not signed in"
+    },
+    "shortLinkErrors": {
+        "codeNotUnique": "The code is not unique",
+        "unknown":"An error has ocurred",
+        "notFound": "The link was not found",
+        "redirectingTo": "Redirecting to "
+    },
+    "deleteLinkErrors": {
+        "success": "Successfully deleted short link."
+    },
+    "copiedToClipboard": "Content copied to clipboard"
 }
