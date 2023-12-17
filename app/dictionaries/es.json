@@ -12,7 +12,7 @@
         "submit": "Guardar"
     },
     "savedLinks": "Enlaces guardados",
-    "refresh": "Recargar",
+    "autoRefreshEnabled": "Recarga automática activada",
     "savedLinksHeaders": {
         "name": "Nombre",
         "content": "Contenido",

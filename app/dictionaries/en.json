@@ -12,7 +12,7 @@
         "submit": "Save"
     },
     "savedLinks": "Saved links",
-    "refresh": "Refresh",
+    "autoRefreshEnabled": "Auto refresh is enabled",
     "savedLinksHeaders": {
         "name": "Name",
         "content": "Content",

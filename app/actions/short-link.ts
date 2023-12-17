@@ -4,7 +4,6 @@ import { Database } from '@/database.types'
 import { createServerActionClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { isValidUrl } from '@/app/lib/is-valid-url'
-import { revalidatePath } from 'next/cache'
 import { getDictionary } from '../get-dictionary'
 import { Locale } from '../i18n-config'
 
@@ -56,7 +55,6 @@ export const shortLink = async (prevState: FormState | undefined, formData: Form
         message: dictionary.shortLinkErrors.unknown
       }
     }
-    revalidatePath('', 'page')
     return {
       link: `https://land-short.vercel.app/${code}`
     }
