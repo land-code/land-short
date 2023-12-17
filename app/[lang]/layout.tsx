@@ -7,7 +7,6 @@ import { getDictionary } from '../get-dictionary'
 import ToastContainer from '../ui/toast-container'
 import { ToastProvider } from '../lib/use-toast'
 import Button from '@/app/ui/button'
-import { ThemeProvider } from 'next-themes'
 import ThemeSwitcher from '../ui/theme-switcher'
 
 const inter = Inter({ subsets: ['latin'] })
