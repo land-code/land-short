@@ -4,10 +4,8 @@ import { useDarkTheme } from '@/app/lib/use-dark-theme'
 import Button from './button'
 import DarkMode from '../icons/dark_mode'
 import LightMode from '../icons/light_mode'
-import { cookies } from 'next/headers'
 
 export default function ThemeSwitcher () {
-  const cookies = cookies().
   const [theme, setTheme] = useDarkTheme()
   return (
     <Button
