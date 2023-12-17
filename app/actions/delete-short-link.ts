@@ -6,7 +6,6 @@ import { createServerActionClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { Database } from '@/database.types'
 import { Locale } from '../i18n-config'
-import { revalidatePath } from 'next/cache'
 
 export interface DeleteShortLinkState {
   message: string | null
@@ -63,7 +62,6 @@ export const deleteShortLink = async (prevState: any, formData: FormData): Promi
       message: dictionary.shortLinkErrors.unknown
     }
   }
-  revalidatePath('/', 'page')
   return {
     ...prevState,
     message: dictionary.deleteLinkErrors.success

@@ -2,7 +2,6 @@ import ShortLinks from '../ui/short-links'
 import ShortenerForm from '../ui/shortener-form'
 import { Locale } from '../i18n-config'
 import { getDictionary } from '../get-dictionary'
-import RefreshButton from '@/app/ui/refresh-button'
 import { Database } from '@/database.types'
 import { cookies } from 'next/headers'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
@@ -25,10 +24,8 @@ export default async function Home ({
         <ShortenerForm userId={user?.id ?? ''} dictionary={dictionary.saveLinkForm} language={lang} />
       </section>
       <section className='flex flex-col items-center w-full max-w-[800px]'>
-        <div className='flex items-center gap-4 mb-2'>
-          <h2 className='text-3xl'>{dictionary.savedLinks}</h2>
-          <RefreshButton dictionary={{ refresh: dictionary.refresh }} />
-        </div>
+        <h2 className='text-3xl'>{dictionary.savedLinks}</h2>
+        <p className='text-zinc-600 dark:text-zinc-400 mb-2'>{dictionary.autoRefreshEnabled}</p>
         <ShortLinks
           dictionary={{
             ...dictionary.savedLinksHeaders,
