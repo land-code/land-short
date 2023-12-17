@@ -35,12 +35,6 @@ const Code = async ({
   }
   if (isValidUrl(data.content)) {
     redirect(data.content)
-    return (
-      <div>
-        <span>{dictionary.shortLinkErrors.redirectingTo}</span>
-        <a>{data?.content}</a>
-      </div>
-    )
   }
   return (
     <span className='text-lg'>

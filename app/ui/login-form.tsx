@@ -1,12 +1,28 @@
 'use client'
-import { useFormState } from 'react-dom'
+import { useFormState, useFormStatus } from 'react-dom'
 import { login } from '@/app/actions/login-action'
-import SubmitButton from './submit-button'
 import { Locale } from '../i18n-config'
 import Login from '@/app/icons/login'
+import { ReactNode } from 'react'
+import Button from './button'
 
 const initialState = {
   message: null
+}
+
+const SubmitButton = ({ dictionary }: {
+  dictionary: {
+    default: string
+    pending: string
+  }
+}): ReactNode => {
+  const { pending } = useFormStatus()
+  return (
+    <Button type='submit' style='secondary' pending={pending} pendingChildren={<><Login />{dictionary.pending}</>}>
+      <Login />
+      {dictionary.default}
+    </Button>
+  )
 }
 
 const LoginForm = ({ dictionary, lang }: {
@@ -19,7 +35,10 @@ const LoginForm = ({ dictionary, lang }: {
       label: string
       placeholder: string
     }
-    submit: string
+    submit: {
+      default: string
+      pending: string
+    }
   }
   lang: Locale
 }): JSX.Element => {
@@ -53,10 +72,7 @@ const LoginForm = ({ dictionary, lang }: {
         />
       </label>
       <input type='text' className='hidden' name='language' value={lang} readOnly />
-      <SubmitButton>
-        <Login />
-        {dictionary.submit}
-      </SubmitButton>
+      <SubmitButton dictionary={dictionary.submit} />
       <p>{state?.message}</p>
     </form>
   )

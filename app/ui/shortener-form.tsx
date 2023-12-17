@@ -1,14 +1,30 @@
 'use client'
 
 import { shortLink } from '../actions/short-link'
-import { useFormState } from 'react-dom'
-import SubmitButton from './submit-button'
+import { useFormState, useFormStatus } from 'react-dom'
 import AddLink from '../icons/add_link'
 import { BASE_URL } from '../lib/consts'
+import Button from './button'
+import { ReactNode } from 'react'
 
 const initialState = {
   message: null,
   link: null
+}
+
+const SubmitButton = ({ dictionary }: {
+  dictionary: {
+    default: string
+    pending: string
+  }
+}): ReactNode => {
+  const { pending } = useFormStatus()
+  return (
+    <Button type='submit' style='secondary' pending={pending} pendingChildren={<><AddLink />{dictionary.pending}</>}>
+      <AddLink />
+      {dictionary.default}
+    </Button>
+  )
 }
 
 export default function ShortenerForm ({
@@ -25,11 +41,14 @@ export default function ShortenerForm ({
       label: string
       placeholder: string
     }
-    submit: string
+    submit: {
+      default: string
+      pending: string
+    }
   }
   language: string
   userId: string
-}): JSX.Element {
+}): ReactNode {
   const [state, formAction] = useFormState(shortLink, initialState)
   return (
     <form action={formAction} className='bg-zinc-800 text-zinc-200 p-4 rounded-xl flex flex-col items-center gap-2 w-full dark:bg-zinc-600'>
@@ -50,17 +69,14 @@ export default function ShortenerForm ({
         <input readOnly className='hidden' type='text' name='language' value={language} />
         <input readOnly className='hidden' type='text' name='username' value={userId} />
       </label>
-      <SubmitButton>
-        <AddLink />
-        {dictionary.submit}
-      </SubmitButton>
+      <SubmitButton dictionary={dictionary.submit} />
       <p className='text-red-300'>{state?.message}</p>
       {(state?.link !== null && state?.link !== '') &&
         <p>
           <span>Link: </span>
-          <a href={state?.link ?? '#'}>
+          <Button type='link' style='neutral' href={state?.link ?? '#'}>
             {state?.link}
-          </a>
+          </Button>
         </p>}
     </form>
   )

@@ -5,6 +5,7 @@ import DeleteIcon from '../icons/delete'
 import { useToast } from '../lib/use-toast'
 import { useEffect } from 'react'
 import { Locale } from '../i18n-config'
+import Button from './button'
 
 export default function DeleteLinkButton ({
   id,
@@ -30,17 +31,16 @@ export default function DeleteLinkButton ({
     if (state.message !== null && !pending) {
       showToast(state.message)
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state, pending])
+  }, [state, pending, showToast])
 
   return (
     <form action={action}>
       <input className='hidden' name='id' value={id} readOnly />
       <input className='hidden' name='language' value={language} readOnly />
-      <button className='flex p-1 rounded-full hover:bg-zinc-500 active:bg-zinc-400' type='submit'>
+      <Button type='submit' style='smallPrimary'>
         <DeleteIcon />
         {dictionary.delete}
-      </button>
+      </Button>
     </form>
   )
 }
