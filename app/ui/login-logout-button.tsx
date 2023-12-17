@@ -1,10 +1,10 @@
 import { Database } from '@/database.types'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
-import Link from 'next/link'
 import { logout } from '@/app/actions/logout'
 import Login from '@/app/icons/login'
 import Logout from '@/app/icons/logout'
+import Button from './button'
 
 const LoginLogoutButton = async ({ dictionary }: {
   dictionary: {
@@ -22,26 +22,28 @@ const LoginLogoutButton = async ({ dictionary }: {
       {
         user === null
           ? (
-            <Link
+            <Button
+              type='link'
+              style='secondaryHeader'
               href='/login'
-              className='flex items-center gap-2 text-xl text-zinc-200 p-2 rounded-full hover:bg-zinc-500 active:bg-zinc-400'
             >
               <Login />
               {dictionary.login}
-            </Link>)
+            </Button>)
           : (
             <div className='flex justify-center items-center flex-wrap gap-4'>
               <p className='text-zinc-200 text-lg'>{user.email}</p>
               {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
               <form action={logout}>
-                <button
-                  className='flex items-center gap-2 text-xl text-zinc-200 p-2 rounded-full hover:bg-zinc-500 active:bg-zinc-400'
+                <Button
+                  type='submit'
+                  style='secondaryHeader'
                 >
                   <Logout />
                   <span className='sr-only sm:not-sr-only'>
                     {dictionary.logout}
                   </span>
-                </button>
+                </Button>
               </form>
             </div>
             )

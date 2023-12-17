@@ -1,56 +1,62 @@
 {
-    "saveLink": "Guarda tu enlace",
-    "saveLinkForm": {
-        "longLink": {
-            "label": "Enlace o codigo",
-            "placeholder": "Introduce tu enlace o codigo"
-        },
-        "code": {
-            "label": "Enlace corto:",
-            "placeholder": "Introduce tu enlace corto"
-        },
-        "submit": "Guardar"
+  "saveLink": "Guarda tu enlace",
+  "saveLinkForm": {
+    "longLink": {
+      "label": "Enlace o codigo",
+      "placeholder": "Introduce tu enlace o codigo"
     },
-    "savedLinks": "Enlaces guardados",
-    "autoRefreshEnabled": "Recarga automática activada",
-    "savedLinksHeaders": {
-        "name": "Nombre",
-        "content": "Contenido",
-        "date": "Fecha",
-        "time": "Hora",
-        "code": "Código",
-        "actions": "Acciones",
-        "delete": "Eliminar"
+    "code": {
+      "label": "Enlace corto:",
+      "placeholder": "Introduce tu enlace corto"
     },
-    "login": "Iniciar sesión",
-    "logout": "Cerrar sesión",
-    "loginForm": {
-        "email": {
-            "label": "Email: ",
-            "placeholder": "Introduce tu email"
-        },
-        "password": {
-            "label": "Contraseña: ",
-            "placeholder": "Introduce tu contraseña"
-        },
-        "submit": "Iniciar sesión"
+    "submit": {
+      "default": "Guardar",
+      "pending": "Guardando..."
+    }
+  },
+  "savedLinks": "Enlaces guardados",
+  "autoRefreshEnabled": "Recarga automática activada",
+  "savedLinksHeaders": {
+    "name": "Nombre",
+    "content": "Contenido",
+    "date": "Fecha",
+    "time": "Hora",
+    "code": "Código",
+    "actions": "Acciones",
+    "delete": "Eliminar"
+  },
+  "login": "Iniciar sesión",
+  "logout": "Cerrar sesión",
+  "loginForm": {
+    "email": {
+      "label": "Email: ",
+      "placeholder": "Introduce tu email"
     },
-    "loginErrors": {
-        "notValid": "No se ha podido iniciar sesión. El email y/o la contraseña no son válidas",
-        "incorrect": "El email y/o la contraseña no son correctos",
-        "unknown": "Ha habido un error"
+    "password": {
+      "label": "Contraseña: ",
+      "placeholder": "Introduce tu contraseña"
     },
-    "sessionErrors": {
-        "notSignedIn": "No has iniciado sesión"
-    },
-    "shortLinkErrors": {
-        "codeNotUnique": "El código ya existe",
-        "unknown": "Ha habido un error",
-        "notFound": "No se ha encontrado el enlace",
-        "redirectingTo": "Redirigiendo a "
-    },
-    "deleteLinkErrors": {
-        "success": "Enlace eliminado correctamente"
-    },
-    "copiedToClipboard": "Contenido copiado al portapapeles"
+    "submit": {
+      "default": "Iniciar sesión",
+      "pending": "Iniciando sesión..."
+    }
+  },
+  "loginErrors": {
+    "notValid": "No se ha podido iniciar sesión. El email y/o la contraseña no son válidas",
+    "incorrect": "El email y/o la contraseña no son correctos",
+    "unknown": "Ha habido un error"
+  },
+  "sessionErrors": {
+    "notSignedIn": "No has iniciado sesión"
+  },
+  "shortLinkErrors": {
+    "codeNotUnique": "El código ya existe",
+    "unknown": "Ha habido un error",
+    "notFound": "No se ha encontrado el enlace",
+    "redirectingTo": "Redirigiendo a "
+  },
+  "deleteLinkErrors": {
+    "success": "Enlace eliminado correctamente"
+  },
+  "copiedToClipboard": "Contenido copiado al portapapeles"
 }

@@ -1,6 +1,7 @@
 'use client'
 
 import { useToast } from '../lib/use-toast'
+import Button from './button'
 
 export default function LinkToCopy ({
   isUrl,
@@ -25,8 +26,8 @@ export default function LinkToCopy ({
     <>
       {
         isUrl
-          ? <a className='block max-w-[15rem] w-max overflow-hidden whitespace-nowrap text-ellipsis text-zinc-600 underline sm:max-w-xs dark:text-zinc-300' href={content ?? undefined}>{content}</a>
-          : <button onClick={() => copyLink(content ?? '')} className='block max-w-[15rem] overflow-hidden whitespace-nowrap text-ellipsis sm:max-w-xs'>{content}</button>
+          ? <Button type='link' style='shortLink' href={content ?? undefined}>{content}</Button>
+          : <Button type='button' style='linkToCopy' onClick={() => copyLink(content ?? '')}>{content}</Button>
       }
     </>
   )
