@@ -31,7 +31,8 @@ export default function DeleteLinkButton ({
     if (state.message !== null && !pending) {
       showToast(state.message)
     }
-  }, [state, pending, showToast])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state, pending])
 
   return (
     <form action={action}>
