@@ -21,11 +21,28 @@ const RealtimeShortCodes = ({
     const channel = supabase
       .channel('*')
       .on('postgres_changes', {
-        event: '*',
+        event: 'INSERT',
         schema: 'public',
         table: 'short_codes'
       }, (payload: any) => {
         setShortCodes(data => [payload.new, ...data])
+      })
+      .on('postgres_changes', {
+        event: 'DELETE',
+        schema: 'public',
+        table: 'short_codes'
+      }, (payload: any) => {
+        setShortCodes(data => data.filter(({ id }) => id !== payload.old.id))
+      })
+      .on('postgres_changes', {
+        event: 'UPDATE',
+        schema: 'public',
+        table: 'short_codes'
+      }, (payload: any) => {
+        setShortCodes(data => data.map(shortCode => {
+          if (shortCode.id === payload.new.id) return payload.new
+          return shortCode
+        }))
       })
       .subscribe()
     return () => {
@@ -34,7 +51,8 @@ const RealtimeShortCodes = ({
   }, [supabase])
 
   return (
-    <>{
+    <>
+      {
         shortCodes?.map(({ id, name, created_at: createdAt, content, is_url: isUrl }) => {
           const date = new Date(createdAt)
           return (
