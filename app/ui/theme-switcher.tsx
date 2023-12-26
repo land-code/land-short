@@ -1,20 +1,26 @@
 'use client'
 
-import { useDarkTheme } from '@/app/lib/use-dark-theme'
 import Button from './button'
 import DarkMode from '../icons/dark_mode'
 import LightMode from '../icons/light_mode'
-import { ReactNode } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
+import { useTheme } from 'next-themes'
 
 export default function ThemeSwitcher (): ReactNode {
-  const [theme, setTheme] = useDarkTheme()
+  const [mounted, setMounted] = useState(false)
+  const { theme, setTheme } = useTheme()
+
+  useEffect(() => setMounted(true), [])
+
+  if (!mounted) return null
+
   return (
     <Button
       title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
       type='button'
       style='primary'
-      onClick={() => setTheme(theme => theme === 'dark' ? 'light' : 'dark')}
+      onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
     >
       <span className='text-zinc-200'>
         {theme === 'light'

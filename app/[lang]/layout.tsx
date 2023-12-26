@@ -8,6 +8,7 @@ import ToastContainer from '../ui/toast-container'
 import { ToastProvider } from '../lib/use-toast'
 import Button from '@/app/ui/button'
 import ThemeSwitcher from '../ui/theme-switcher'
+import Providers from '../ui/providers'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -29,27 +30,29 @@ export default async function RootLayout ({
 }): Promise<JSX.Element> {
   const dictionary = await getDictionary(lang)
   return (
-    <html className='h-full' lang={lang}>
+    <html className='h-full' lang={lang} suppressHydrationWarning>
       <body className={`${inter.className} flex flex-col h-full`}>
-        <ToastProvider>
-          <header className='flex flex-wrap justify-center items-center bg-zinc-800 text-white p-2 sm:justify-between dark:bg-zinc-900'>
-            <Button type='link' href='/' style='primary'>
-              <h1 className='text-3xl'>
-                Land shortener
-              </h1>
-            </Button>
-            <div className='flex items-center gap-2 text-lg'>
-              <ThemeSwitcher />
-              <LoginLogoutButton
-                dictionary={{ login: dictionary.login, logout: dictionary.logout }}
-              />
-            </div>
-          </header>
-          <main className='bg-zinc-200 flex-grow p-2 dark:bg-zinc-800 dark:text-zinc-200'>
-            {children}
-            <ToastContainer />
-          </main>
-        </ToastProvider>
+        <Providers>
+          <ToastProvider>
+            <header className='flex flex-wrap justify-center items-center bg-zinc-800 text-white p-2 sm:justify-between dark:bg-zinc-900'>
+              <Button type='link' href='/' style='primary'>
+                <h1 className='text-3xl'>
+                  Land shortener
+                </h1>
+              </Button>
+              <div className='flex items-center gap-2 text-lg'>
+                <ThemeSwitcher />
+                <LoginLogoutButton
+                  dictionary={{ login: dictionary.login, logout: dictionary.logout }}
+                />
+              </div>
+            </header>
+            <main className='bg-zinc-200 flex-grow p-2 dark:bg-zinc-800 dark:text-zinc-200'>
+              {children}
+              <ToastContainer />
+            </main>
+          </ToastProvider>
+        </Providers>
       </body>
     </html>
   )
