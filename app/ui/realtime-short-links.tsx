@@ -20,30 +20,32 @@ const RealtimeShortCodes = ({
   useEffect(() => {
     const channel = supabase
       .channel('*')
-      .on('postgres_changes', {
-        event: 'INSERT',
-        schema: 'public',
-        table: 'short_codes'
-      }, (payload: any) => {
-        setShortCodes(data => [payload.new, ...data])
-      })
-      .on('postgres_changes', {
-        event: 'DELETE',
-        schema: 'public',
-        table: 'short_codes'
-      }, (payload: any) => {
-        setShortCodes(data => data.filter(({ id }) => id !== payload.old.id))
-      })
-      .on('postgres_changes', {
-        event: 'UPDATE',
-        schema: 'public',
-        table: 'short_codes'
-      }, (payload: any) => {
-        setShortCodes(data => data.map(shortCode => {
-          if (shortCode.id === payload.new.id) return payload.new
-          return shortCode
-        }))
-      })
+      .on(
+        'postgres_changes',
+        {
+          event: '*',
+          schema: 'public',
+          table: 'short_codes'
+        },
+        (payload: any) => {
+          if (payload.eventType === 'INSERT') {
+            setShortCodes((data) => [payload.new, ...data])
+          }
+          if (payload.eventType === 'UPDATE') {
+            setShortCodes((data) =>
+              data.map((shortCode) => {
+                if (shortCode.id === payload.new.id) return payload.new
+                return shortCode
+              })
+            )
+          }
+          if (payload.eventType === 'DELETE') {
+            setShortCodes((data) =>
+              data.filter(({ id }) => id !== payload.old.id)
+            )
+          }
+        }
+      )
       .subscribe()
     return () => {
       void supabase.removeChannel(channel)
@@ -52,26 +54,36 @@ const RealtimeShortCodes = ({
 
   return (
     <>
-      {
-        shortCodes?.map(({ id, name, created_at: createdAt, content, is_url: isUrl }) => {
+      {shortCodes?.map(
+        ({ id, name, created_at: createdAt, content, is_url: isUrl }) => {
           const date = new Date(createdAt)
           return (
             <tr key={id} className='flex flex-col sm:table-row'>
               <td className='font-bold sm:font-normal'>{name}</td>
               <td>
                 <div className='flex justify-center'>
-                  <LinkToCopy isUrl={isUrl} content={content} dictionary={{ copiedToClipboard: dictionary.copiedToClipboard }} />
+                  <LinkToCopy
+                    isUrl={isUrl}
+                    content={content}
+                    dictionary={{
+                      copiedToClipboard: dictionary.copiedToClipboard
+                    }}
+                  />
                 </div>
               </td>
               <td>{date.toDateString()}</td>
               <td>{date.toLocaleTimeString()}</td>
               <td className='flex justify-center border-b-2 border-zinc-800 sm:border-0'>
-                <DeleteLinkButton language={language} dictionary={{ delete: dictionary.delete }} id={id} />
+                <DeleteLinkButton
+                  language={language}
+                  dictionary={{ delete: dictionary.delete }}
+                  id={id}
+                />
               </td>
             </tr>
           )
-        })
-      }
+        }
+      )}
     </>
   )
 }
