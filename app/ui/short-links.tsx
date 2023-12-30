@@ -28,21 +28,6 @@ export default async function ShortLinks ({
   if (error != null) console.error(error)
 
   return (
-    <div className='w-full border-zinc-600 border-2 rounded-xl sm:p-2 dark:border-0 dark:bg-zinc-600'>
-      <table className='table-auto text-center w-full'>
-        <thead>
-          <tr className='hidden sm:table-row text-xl [&>th]:font-normal'>
-            <th>{dictionary.code}</th>
-            <th>{dictionary.content}</th>
-            <th className='hidden sm:table-cell'>{dictionary.date}</th>
-            <th className='hidden sm:table-cell'>{dictionary.time}</th>
-            <th className='hidden sm:table-cell'>{dictionary.actions}</th>
-          </tr>
-        </thead>
-        <tbody>
-          <RealtimeShortCodes serverShortCodes={data ?? []} dictionary={dictionary} language={language} />
-        </tbody>
-      </table>
-    </div>
+    <RealtimeShortCodes serverShortCodes={data ?? []} dictionary={dictionary} language={language} />
   )
 }

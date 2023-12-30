@@ -5,6 +5,9 @@ import { getDictionary } from '../get-dictionary'
 import { Database } from '@/database.types'
 import { cookies } from 'next/headers'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import ShortLinksContainer from '../ui/short-links-container'
+import { Suspense } from 'react'
+import ShortLinksPlaceholder from '../ui/short-links-placeholder'
 
 export default async function Home ({
   params: { lang }
@@ -26,13 +29,27 @@ export default async function Home ({
       <section className='flex flex-col items-center w-full max-w-[800px]'>
         <h2 className='text-3xl'>{dictionary.savedLinks}</h2>
         <p className='text-zinc-600 dark:text-zinc-400 mb-2'>{dictionary.autoRefreshEnabled}</p>
-        <ShortLinks
+        <ShortLinksContainer
+          lang={lang}
           dictionary={{
-            ...dictionary.savedLinksHeaders,
+            savedLinksHeaders: dictionary.savedLinksHeaders,
             copiedToClipboard: dictionary.copiedToClipboard
           }}
-          language={lang}
-        />
+        >
+          <Suspense
+            fallback={
+              <ShortLinksPlaceholder />
+}
+          >
+            <ShortLinks
+              dictionary={{
+                ...dictionary.savedLinksHeaders,
+                copiedToClipboard: dictionary.copiedToClipboard
+              }}
+              language={lang}
+            />
+          </Suspense>
+        </ShortLinksContainer>
       </section>
     </div>
   )

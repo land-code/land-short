@@ -30,7 +30,7 @@ export default async function RootLayout ({
 }): Promise<JSX.Element> {
   const dictionary = await getDictionary(lang)
   return (
-    <html className='h-full' lang={lang} suppressHydrationWarning>
+    <html className='h-full [scrollbar-gutter:stable]' lang={lang} suppressHydrationWarning>
       <body className={`${inter.className} flex flex-col h-full`}>
         <Providers>
           <ToastProvider>
