@@ -72,7 +72,8 @@ const RealtimeShortCodes = ({
                 </div>
               </td>
               <td>{date.toDateString()}</td>
-              <td>{date.toLocaleTimeString()}</td>
+              <td>{date.toLocaleTimeString(language)}
+              </td>
               <td className='flex justify-center border-b-2 border-zinc-800 sm:border-0'>
                 <DeleteLinkButton
                   language={language}
