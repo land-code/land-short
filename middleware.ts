@@ -35,8 +35,8 @@ export async function middleware (request: NextRequest, response: NextResponse):
     [
       '/manifest.json',
       '/favicon.ico',
-      '/diamante-edixgal.zip'
-      // Your other files in `public`
+      '/diamante-edixgal.zip',
+      'google24c567986bf3abaa.html'
     ].includes(pathname)
   ) {
     return NextResponse.next()
