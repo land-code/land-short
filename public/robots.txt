@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /diamante-edixgal.zip
+Sitemap: /sitemap.xml
