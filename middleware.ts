@@ -36,7 +36,8 @@ export async function middleware (request: NextRequest, response: NextResponse):
       '/manifest.json',
       '/favicon.ico',
       '/diamante-edixgal.zip',
-      '/google24c567986bf3abaa.html'
+      '/favicon-light.png',
+      '/favicon-dark.png'
     ].includes(pathname)
   ) {
     return NextResponse.next()

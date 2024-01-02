@@ -14,7 +14,19 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Land shortener',
-  description: 'An easy to use shortener by land-code'
+  description: 'An easy to use shortener by land-code',
+  icons: [
+    {
+      media: '(prefers-color-scheme: light)',
+      href: '/favicon-light.png',
+      url: '/favicon-light.png'
+    },
+    {
+      media: '(prefers-color-scheme: dark)',
+      href: '/favicon-dark.png',
+      url: '/favicon-dark.png'
+    }
+  ]
 }
 
 export async function generateStaticParams (): Promise<Array<{ lang: Locale }>> {
