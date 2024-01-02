@@ -43,7 +43,7 @@ export default async function RootLayout ({
   const dictionary = await getDictionary(lang)
   return (
     <html className='h-full [scrollbar-gutter:stable]' lang={lang} suppressHydrationWarning>
-      <body className={`${inter.className} flex flex-col h-full`}>
+      <body className={`${inter.className} flex flex-col h-full bg-zinc-800 dark:bg-zinc-900`}>
         <Providers>
           <ToastProvider>
             <header className='flex flex-wrap justify-center items-center bg-zinc-800 text-white p-2 sm:justify-between dark:bg-zinc-900'>
@@ -59,7 +59,7 @@ export default async function RootLayout ({
                 />
               </div>
             </header>
-            <main className='bg-zinc-200 flex-grow p-2 dark:bg-zinc-800 dark:text-zinc-200'>
+            <main className='bg-zinc-200 flex-grow p-2 dark:bg-zinc-800 dark:text-zinc-200 rounded-xl'>
               {children}
               <ToastContainer />
             </main>
