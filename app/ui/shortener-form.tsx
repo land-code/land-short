@@ -66,8 +66,8 @@ export default function ShortenerForm ({
           <span className='w-max'>{BASE_URL}</span>
           <input required name='code' className='flex-grow p-2 rounded-xl bg-zinc-600 text-zinc-200 dark:bg-zinc-800' placeholder={dictionary.code.placeholder} />
         </div>
-        <input readOnly className='hidden' type='text' name='language' value={language} />
-        <input readOnly className='hidden' type='text' name='username' value={userId} />
+        <input autoComplete='off' readOnly className='hidden' type='text' name='language' value={language} />
+        <input autoComplete='off' readOnly className='hidden' type='text' name='username' value={userId} />
       </label>
       <SubmitButton dictionary={dictionary.submit} />
       <p className='text-red-300'>{state?.message}</p>
