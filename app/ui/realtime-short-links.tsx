@@ -1,9 +1,12 @@
 'use client'
 import { Database } from '@/database.types'
 import { ReactNode, useEffect, useState } from 'react'
-import DeleteLinkButton from './delete-link-button'
 import LinkToCopy from './link-to-copy'
 import { createClientComponentClient } from '@supabase/auth-helpers-nextjs'
+import { TableCell, TableRow } from '@/components/ui/table'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+import Button from './button'
+import DeleteLinkButton from './delete-link-button'
 
 const RealtimeShortCodes = ({
   serverShortCodes,
@@ -58,9 +61,9 @@ const RealtimeShortCodes = ({
         ({ id, name, created_at: createdAt, content, is_url: isUrl }) => {
           const date = new Date(createdAt)
           return (
-            <tr key={id} className='flex flex-col sm:table-row'>
-              <td className='font-bold sm:font-normal'>{name}</td>
-              <td>
+            <TableRow key={id} className='flex flex-col sm:table-row'>
+              <TableCell className='font-bold sm:font-normal'>{name}</TableCell>
+              <TableCell>
                 <div className='flex justify-center'>
                   <LinkToCopy
                     isUrl={isUrl}
@@ -70,18 +73,18 @@ const RealtimeShortCodes = ({
                     }}
                   />
                 </div>
-              </td>
-              <td>{date.toDateString()}</td>
-              <td>{date.toLocaleTimeString(language)}
-              </td>
-              <td className='flex justify-center border-b-2 border-zinc-800 sm:border-0'>
+              </TableCell>
+              <TableCell>{date.toDateString()}</TableCell>
+              <TableCell>{date.toLocaleTimeString(language)}
+              </TableCell>
+              <TableCell className='flex justify-center border-b-2 border-zinc-800 sm:border-0'>
                 <DeleteLinkButton
                   language={language}
                   dictionary={{ delete: dictionary.delete }}
                   id={id}
                 />
-              </td>
-            </tr>
+              </TableCell>
+            </TableRow>
           )
         }
       )}

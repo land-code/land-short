@@ -3,6 +3,7 @@ import { ReactNode } from 'react'
 
 const Button = ({
   type = 'button',
+  className = '',
   style = 'primary',
   title = '',
   href = '#',
@@ -12,6 +13,7 @@ const Button = ({
   children
 }: {
   type?: 'button' | 'submit' | 'reset' | 'link'
+  className?: string
   style?: 'neutral' | 'primary' | 'secondary' | 'secondaryHeader' | 'shortLink' | 'linkToCopy' | 'smallPrimary'
   title?: string
   href?: string
@@ -36,7 +38,7 @@ const Button = ({
         ? (
           <Link
             title={title}
-            className={styles[style]}
+            className={`${styles[style]} ${className}`}
             href={href}
           >
             {children}
@@ -47,7 +49,7 @@ const Button = ({
             title={title}
             disabled={pending}
             onClick={onClick}
-            className={styles[style]}
+            className={`${styles[style]} ${className}`}
             type={type}
           >
             {pending

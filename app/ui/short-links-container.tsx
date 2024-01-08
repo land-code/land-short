@@ -1,3 +1,4 @@
+import { Table, TableBody, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Locale } from '../i18n-config'
 
 interface ShortLinksContainerProps {
@@ -24,20 +25,20 @@ const ShortLinksContainer = ({
 }: ShortLinksContainerProps): JSX.Element => {
   return (
     <div className='w-full border-zinc-600 border-2 rounded-xl sm:p-2 dark:border-0 dark:bg-zinc-600'>
-      <table className='table-auto text-center w-full'>
-        <thead>
-          <tr className='hidden sm:table-row text-xl [&>th]:font-normal'>
-            <th>{dictionary.savedLinksHeaders.name}</th>
-            <th>{dictionary.savedLinksHeaders.content}</th>
-            <th className='hidden sm:table-cell'>{dictionary.savedLinksHeaders.date}</th>
-            <th className='hidden sm:table-cell'>{dictionary.savedLinksHeaders.time}</th>
-            <th className='hidden sm:table-cell'>{dictionary.savedLinksHeaders.actions}</th>
-          </tr>
-        </thead>
-        <tbody>
+      <Table className='table-auto text-center w-full'>
+        <TableHeader>
+          <TableRow className='hidden sm:table-row text-xl [&>th]:font-normal'>
+            <TableHead>{dictionary.savedLinksHeaders.name}</TableHead>
+            <TableHead>{dictionary.savedLinksHeaders.content}</TableHead>
+            <TableHead className='hidden sm:table-cell'>{dictionary.savedLinksHeaders.date}</TableHead>
+            <TableHead className='hidden sm:table-cell'>{dictionary.savedLinksHeaders.time}</TableHead>
+            <TableHead className='hidden sm:table-cell'>{dictionary.savedLinksHeaders.actions}</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
           {children}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
     </div>
   )
 }

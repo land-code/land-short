@@ -11,15 +11,21 @@
   },
   "dependencies": {
     "@formatjs/intl-localematcher": "0.5.2",
+    "@radix-ui/react-dropdown-menu": "^2.0.6",
     "@supabase/auth-helpers-nextjs": "0.8.7",
     "@supabase/supabase-js": "2.39.0",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.0",
     "i18n-config": "1.1.0",
+    "lucide-react": "^0.307.0",
     "material-symbols": "0.14.3",
     "negotiator": "0.6.3",
     "next": "14.0.4",
     "next-themes": "0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "tailwind-merge": "^2.2.0",
+    "tailwindcss-animate": "^1.0.7",
     "zod": "3.22.4"
   },
   "devDependencies": {
