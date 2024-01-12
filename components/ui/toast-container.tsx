@@ -1,6 +1,6 @@
 'use client'
 
-import { useToast } from '../lib/use-toast'
+import { useToast } from '../../app/lib/use-toast'
 
 export default function ToastContainer (): JSX.Element {
   const { ToastContainer } = useToast()

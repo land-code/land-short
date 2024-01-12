@@ -1,10 +1,10 @@
 'use client'
 import { DeleteShortLinkState, deleteShortLink } from '@/app/actions/delete-short-link'
 import { useFormState, useFormStatus } from 'react-dom'
-import DeleteIcon from '../icons/delete'
-import { useToast } from '../lib/use-toast'
+import DeleteIcon from '../../app/icons/delete'
+import { useToast } from '../../app/lib/use-toast'
 import { useEffect } from 'react'
-import { Locale } from '../i18n-config'
+import { Locale } from '../../app/i18n-config'
 import Button from './button'
 
 export default function DeleteLinkButton ({

@@ -1,7 +1,7 @@
 'use client'
 import { useFormState, useFormStatus } from 'react-dom'
 import { login } from '@/app/actions/login-action'
-import { Locale } from '../i18n-config'
+import { Locale } from '../../app/i18n-config'
 import Login from '@/app/icons/login'
 import { ReactNode } from 'react'
 import Button from './button'

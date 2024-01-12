@@ -1,9 +1,9 @@
 'use client'
 
-import { shortLink } from '../actions/short-link'
+import { shortLink } from '../../app/actions/short-link'
 import { useFormState, useFormStatus } from 'react-dom'
-import AddLink from '../icons/add_link'
-import { BASE_URL } from '../lib/consts'
+import AddLink from '../../app/icons/add_link'
+import { BASE_URL } from '../../app/lib/consts'
 import Button from './button'
 import { ReactNode } from 'react'
 

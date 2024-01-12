@@ -1,13 +1,13 @@
-import ShortLinks from '../ui/short-links'
-import ShortenerForm from '../ui/shortener-form'
+import ShortLinks from '../../components/ui/short-links'
+import ShortenerForm from '../../components/ui/shortener-form'
 import { Locale } from '../i18n-config'
 import { getDictionary } from '../get-dictionary'
 import { Database } from '@/database.types'
 import { cookies } from 'next/headers'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
-import ShortLinksContainer from '../ui/short-links-container'
+import ShortLinksContainer from '../../components/ui/short-links-container'
 import { Suspense } from 'react'
-import ShortLinksPlaceholder from '../ui/short-links-placeholder'
+import ShortLinksPlaceholder from '../../components/ui/short-links-placeholder'
 
 export default async function Home ({
   params: { lang }

@@ -2,13 +2,13 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import '@/app/globals.css'
 import { Locale, i18n } from '../i18n-config'
-import LoginLogoutButton from '../ui/login-logout-button'
+import LoginLogoutButton from '../../components/ui/login-logout-button'
 import { getDictionary } from '../get-dictionary'
-import ToastContainer from '../ui/toast-container'
+import ToastContainer from '../../components/ui/toast-container'
 import { ToastProvider } from '../lib/use-toast'
-import Button from '@/app/ui/button'
-import ThemeSwitcher from '../ui/theme-switcher'
-import Providers from '../ui/providers'
+import Button from '@/components/ui/button'
+import ThemeSwitcher from '../../components/ui/theme-switcher'
+import Providers from '../../components/ui/providers'
 
 const inter = Inter({ subsets: ['latin'] })
 
