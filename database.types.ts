@@ -16,15 +16,15 @@ export interface Database {
           id: number
           is_url: boolean
           name: string
-          username: string | null
+          user: string
         }
         Insert: {
           content?: string | null
           created_at?: string
           id?: number
-          is_url?: boolean
+          is_url: boolean
           name: string
-          username?: string | null
+          user?: string
         }
         Update: {
           content?: string | null
@@ -32,12 +32,12 @@ export interface Database {
           id?: number
           is_url?: boolean
           name?: string
-          username?: string | null
+          user?: string
         }
         Relationships: [
           {
-            foreignKeyName: 'short_codes_username_fkey'
-            columns: ['username']
+            foreignKeyName: 'short_codes_user_fkey'
+            columns: ['user']
             isOneToOne: false
             referencedRelation: 'users'
             referencedColumns: ['id']

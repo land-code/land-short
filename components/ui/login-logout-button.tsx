@@ -32,8 +32,9 @@ const LoginLogoutButton = async ({ dictionary }: {
             </Button>)
           : (
             <div className='flex justify-center items-center flex-wrap gap-4'>
-              <p className='text-zinc-200 text-lg'>{user.email}</p>
-              {/* eslint-disable-next-line @typescript-eslint/no-misused-promises */}
+              <Button type='link' href='dashboard'>
+                {user.email}
+              </Button>
               <form action={logout}>
                 <Button
                   type='submit'
