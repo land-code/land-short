@@ -11,11 +11,11 @@ export const deleteLink = async (id: number) => {
   try {
     const cookieStore = cookies()
     const supabase = createServerActionClient<Database>({ cookies: () => cookieStore })
-    const { error, status } = await supabase
+    const { error } = await supabase
       .from('short_codes')
       .delete()
       .eq('id', id)
-    if (error !== null || status !== 200) throw new SupabaseError(error?.message)
+    if (error !== null) throw new SupabaseError(error?.message)
     revalidatePath('/', 'page')
     return null
   } catch (error) {
