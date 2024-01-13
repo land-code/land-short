@@ -30,7 +30,8 @@ const SubmitButton = ({ dictionary }: {
 export default function ShortenerForm ({
   dictionary,
   language,
-  userId
+  userId,
+  className = ''
 }: {
   dictionary: {
     longLink: {
@@ -48,10 +49,11 @@ export default function ShortenerForm ({
   }
   language: string
   userId: string
+  className?: string
 }): ReactNode {
   const [state, formAction] = useFormState(shortLink, initialState)
   return (
-    <form action={formAction} className='bg-zinc-800 text-zinc-200 p-4 rounded-xl flex flex-col items-center gap-2 w-full dark:bg-zinc-600'>
+    <form action={formAction} className={`bg-zinc-800 text-zinc-200 p-4 rounded-xl flex flex-col items-center gap-2 w-full dark:bg-zinc-600 ${className}`}>
       <label className='w-full'>
         <span>
           {dictionary.longLink.label}

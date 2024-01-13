@@ -1,12 +1,21 @@
+import { getDictionary } from '@/app/get-dictionary'
+import { Locale } from '@/app/i18n-config'
+import AddLinkButton from '@/components/add-link-button'
 import DashboardRow from '@/components/dashboard-row'
-import Button from '@/components/ui/button'
+import SubmitButton from '@/components/ui/submit-button'
 import { Table, TableBody, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 import { Database } from '@/database.types'
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
+import { revalidatePath } from 'next/cache'
 import { cookies } from 'next/headers'
 import { redirect } from 'next/navigation'
 
-export default async function DashboardPage () {
+export default async function DashboardPage ({
+  params: { lang }
+}: {
+  params: { lang: Locale }
+}) {
+  const dictionary = await getDictionary(lang)
   const cookieStore = cookies()
   const supabase = createServerComponentClient<Database>({ cookies: () => cookieStore })
 
@@ -22,19 +31,29 @@ export default async function DashboardPage () {
     .eq('user', user.id)
 
   if (error) console.error(error)
+
+  const deleteLinks = async (formData: FormData) => {
+    'use server'
+
+    const ids = formData.getAll('id')
+    const { error } = await supabase
+      .from('short_codes')
+      .delete()
+      .in('id', ids)
+    if (error) console.error(error)
+    revalidatePath('/dashboard', 'page')
+  }
   return (
     <div className='p-2'>
       <h1 className='text-3xl mb-2'>Dashboard</h1>
-      <form className='grid gap-4'>
+      <form action={deleteLinks} className='grid gap-4'>
         <div className='flex justify-between items-center'>
           <h2 className='text-xl'>Short links</h2>
           <div className='flex gap-2'>
-            <Button style='primary' title='Add new link'>
-              Add new link
-            </Button>
-            <Button style='primary' title='Delete selected links'>
+            <AddLinkButton dictionary={dictionary} language={lang} userId={user.id} />
+            <SubmitButton>
               Delete selected links
-            </Button>
+            </SubmitButton>
           </div>
         </div>
         <Table className='bg-zinc-300 rounded-xl p-4 dark:text-zinc-50 dark:bg-zinc-950'>

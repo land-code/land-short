@@ -6,25 +6,26 @@ import { cookies } from 'next/headers'
 import { isValidUrl } from '@/app/lib/is-valid-url'
 import { getDictionary } from '../get-dictionary'
 import { Locale } from '../i18n-config'
+import { z } from 'zod'
 
 interface FormState {
   message?: string | null
   link?: string | null
 }
+
+const ShortLinkSchema = z.object({
+  name: z.string().min(1),
+  content: z.string().min(1)
+})
+
 export const shortLink = async (prevState: FormState | undefined, formData: FormData): Promise<FormState | undefined> => {
   const language = formData.get('language') as Locale | null ?? 'en'
-  const userId = formData.get('username') as string | null ?? ''
   const dictionary = await getDictionary(language)
   try {
     const supabase = createServerActionClient<Database>({ cookies })
-    const longLink = formData.get('long-link') as string | null ?? ''
-    const code = formData.get('code') as string | null ?? ''
-    if (typeof longLink !== 'string' || typeof code !== 'string' || longLink === '' || code === '') {
-      return {
-        ...prevState,
-        message: 'Name and long link are required'
-      }
-    }
+    const longLink = formData.get('long-link')
+    const code = formData.get('code')
+    const result = ShortLinkSchema.parse({ name: code, content: longLink })
     const { data: { session } } = await supabase
       .auth
       .getSession()
@@ -37,10 +38,9 @@ export const shortLink = async (prevState: FormState | undefined, formData: Form
     const { error } = await supabase
       .from('short_codes')
       .insert({
-        content: longLink,
-        is_url: isValidUrl(longLink),
-        name: code,
-        username: userId
+        content: result.content,
+        is_url: isValidUrl(result.content),
+        name: result.name
       })
     if (error?.code === '23505') {
       return {
@@ -56,9 +56,10 @@ export const shortLink = async (prevState: FormState | undefined, formData: Form
       }
     }
     return {
-      link: `https://land-short.vercel.app/${code}`
+      link: `https://land-short.vercel.app/${result.name}`
     }
-  } catch (err) {
+  } catch (error) {
+    console.error(error)
     return {
       message: dictionary.shortLinkErrors.unknown ?? 'Failed to short'
     }

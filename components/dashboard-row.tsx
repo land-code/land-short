@@ -12,7 +12,7 @@ export default function DashboardRow ({ id, name, content, createdAt }: { id: nu
   const { showToast } = useToast()
   return (
     <TableRow>
-      <TableCell><Checkbox name='link' value='a' /></TableCell>
+      <TableCell><Checkbox name='id' value={id} /></TableCell>
       <TableCell>{name}</TableCell>
       <TableCell>{content}</TableCell>
       <TableCell>{createdAt}</TableCell>

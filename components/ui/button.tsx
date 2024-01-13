@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { ReactNode } from 'react'
 
-const styles = {
+export const buttonStyles = {
   neutral: 'underline',
   primary: 'flex items-center gap-2 p-2 rounded-full bg-zinc-800 text-zinc-50 transition-colors hover:bg-zinc-600 active:bg-zinc-500 disabled:bg-zinc-400 dark:bg-zinc-900 dark:hover:bg-zinc-700 dark:active:bg-zinc-600 dark:disabled:bg-zinc-900',
   primaryTransparent: 'flex items-center gap-2 p-2 rounded-full text-zinc-50 transition-colors hover:bg-zinc-600 active:bg-zinc-500 disabled:bg-zinc-400 dark:hover:bg-zinc-700 dark:active:bg-zinc-600 dark:disabled:bg-zinc-900',
@@ -25,7 +25,7 @@ const Button = ({
 }: {
   type?: 'button' | 'submit' | 'reset' | 'link'
   className?: string
-  style?: keyof typeof styles
+  style?: keyof typeof buttonStyles
   title?: string
   href?: string
   onClick?: () => void
@@ -40,7 +40,7 @@ const Button = ({
         ? (
           <Link
             title={title}
-            className={`${styles[style]} ${className}`}
+            className={`${buttonStyles[style]} ${className}`}
             href={href}
           >
             {children}
@@ -51,7 +51,7 @@ const Button = ({
             title={title}
             disabled={pending}
             onClick={onClick}
-            className={`${styles[style]} ${className}`}
+            className={`${buttonStyles[style]} ${className}`}
             type={type}
           >
             {pending

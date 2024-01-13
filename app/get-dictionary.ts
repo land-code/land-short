@@ -9,7 +9,8 @@ const dictionaries = {
   gl: async () => await import('./dictionaries/es.json').then((module) => module.default)
 }
 
-type Dictionary = ReturnType<typeof dictionaries.en>
+type PromiseType<T> = T extends Promise<infer U> ? U : T
+export type Dictionary = PromiseType<ReturnType<typeof dictionaries.en>>
 
 export const getDictionary = async (locale: Locale): Promise<Dictionary> =>
   await (dictionaries[locale]?.() ?? dictionaries.en())
