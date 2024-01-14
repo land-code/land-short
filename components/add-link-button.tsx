@@ -20,13 +20,13 @@ export default function AddLinkButton ({
     <Dialog>
       <DialogTrigger asChild>
         <Button
-          style='primary' title='Add new link' className={buttonStyles.primary}
+          style='primary' title='Add new link' type='button' className={buttonStyles.primary}
         >
           Add new link
         </Button>
       </DialogTrigger>
-      <DialogContent>
-        <ShortenerForm dictionary={dictionary.saveLinkForm} language='es' userId={userId} className='bg-transparent dark:bg-transparent' />
+      <DialogContent className='bg-zinc-50'>
+        <ShortenerForm dictionary={dictionary.saveLinkForm} language='es' userId={userId} className='bg-zinc-50 text-zinc-950 dark:text-zinc-50 dark:bg-zinc-950' />
       </DialogContent>
     </Dialog>
   )

@@ -9,6 +9,7 @@ import { ToastProvider } from '../lib/use-toast'
 import Button from '@/components/ui/button'
 import ThemeSwitcher from '../../components/ui/theme-switcher'
 import Providers from '../../components/ui/providers'
+import HeadwayComponent from '@/components/headway-badge'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -47,11 +48,14 @@ export default async function RootLayout ({
         <Providers>
           <ToastProvider>
             <header className='flex flex-wrap justify-center items-center bg-zinc-800 text-white p-2 sm:justify-between dark:bg-zinc-900'>
-              <Button type='link' href='/' style='primary'>
-                <h1 className='text-3xl'>
-                  Land shortener
-                </h1>
-              </Button>
+              <div className='flex items-center'>
+                <Button type='link' href='/' style='primary'>
+                  <h1 className='text-3xl'>
+                    Land shortener
+                  </h1>
+                </Button>
+                <HeadwayComponent />
+              </div>
               <div className='flex items-center gap-2 text-lg'>
                 <ThemeSwitcher />
                 <LoginLogoutButton
