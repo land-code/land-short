@@ -27,7 +27,11 @@ export default async function ShortLinks ({
     .order('created_at', { ascending: false })
   if (error != null) console.error(error)
 
+  const { data: { user } } = await supabase
+    .auth
+    .getUser()
+
   return (
-    <RealtimeShortCodes serverShortCodes={data ?? []} dictionary={dictionary} language={language} />
+    <RealtimeShortCodes serverShortCodes={data ?? []} dictionary={dictionary} language={language} userId={user?.id} />
   )
 }

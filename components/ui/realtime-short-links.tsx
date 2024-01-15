@@ -9,11 +9,13 @@ import DeleteLinkButton from './delete-link-button'
 const RealtimeShortCodes = ({
   serverShortCodes,
   dictionary,
-  language
+  language,
+  userId
 }: {
   serverShortCodes: Array<Database['public']['Tables']['short_codes']['Row']>
   dictionary: { copiedToClipboard: string, delete: string }
   language: 'en' | 'es'
+  userId: string | undefined
 }): ReactNode => {
   const [shortCodes, setShortCodes] = useState(serverShortCodes)
 
@@ -75,13 +77,15 @@ const RealtimeShortCodes = ({
               <TableCell>{date.toDateString()}</TableCell>
               <TableCell>{date.toLocaleTimeString(language)}
               </TableCell>
-              <TableCell className='flex justify-center border-b-2 border-zinc-800 sm:border-0'>
-                <DeleteLinkButton
-                  language={language}
-                  dictionary={{ delete: dictionary.delete }}
-                  id={id}
-                />
-              </TableCell>
+              {userId != null && (
+                <TableCell className='flex justify-center border-b-2 border-zinc-800 sm:border-0'>
+                  <DeleteLinkButton
+                    language={language}
+                    dictionary={{ delete: dictionary.delete }}
+                    id={id}
+                  />
+                </TableCell>
+              )}
             </TableRow>
           )
         }

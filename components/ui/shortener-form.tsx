@@ -31,7 +31,8 @@ export default function ShortenerForm ({
   dictionary,
   language,
   userId,
-  className = ''
+  className = '',
+  page = '/'
 }: {
   dictionary: {
     longLink: {
@@ -50,6 +51,7 @@ export default function ShortenerForm ({
   language: string
   userId: string
   className?: string
+  page?: string
 }): ReactNode {
   const [state, formAction] = useFormState(shortLink, initialState)
   return (
@@ -58,18 +60,19 @@ export default function ShortenerForm ({
         <span>
           {dictionary.longLink.label}
         </span>
-        <input autoComplete='off' type='text' required name='long-link' className='block p-2 rounded-xl bg-zinc-600 text-zinc-200 w-full dark:bg-zinc-800' placeholder={dictionary.longLink.placeholder} />
+        <input type='text' required name='long-link' className='block p-2 rounded-xl bg-zinc-600 text-zinc-200 w-full dark:bg-zinc-800' placeholder={dictionary.longLink.placeholder} />
       </label>
       <label className='w-full'>
         <span>
           {dictionary.code.label}
         </span>
         <div className='flex items-center flex-wrap'>
-          <span className='w-max'>{BASE_URL}</span>
-          <input required name='code' className='flex-grow p-2 rounded-xl bg-zinc-600 text-zinc-200 dark:bg-zinc-800' placeholder={dictionary.code.placeholder} />
+          <span className='w-max text-zinc-300'>{BASE_URL}</span>
+          <input autoComplete='off' required name='code' className='flex-grow p-2 rounded-xl bg-zinc-600 text-zinc-200 dark:bg-zinc-800' placeholder={dictionary.code.placeholder} />
         </div>
         <input autoComplete='off' readOnly className='hidden' type='text' name='language' value={language} />
         <input autoComplete='off' readOnly className='hidden' type='text' name='username' value={userId} />
+        <input autoComplete='off' readOnly className='hidden' type='text' name='page' value={page} />
       </label>
       <SubmitButton dictionary={dictionary.submit} />
       <p className='text-red-300'>{state?.message}</p>

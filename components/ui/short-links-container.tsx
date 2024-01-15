@@ -24,22 +24,20 @@ const ShortLinksContainer = ({
   lang
 }: ShortLinksContainerProps): JSX.Element => {
   return (
-    <div className='w-full border-zinc-600 border-2 rounded-xl sm:p-2 dark:border-0 dark:bg-zinc-600'>
-      <Table className='table-auto text-center w-full'>
-        <TableHeader>
-          <TableRow className='hidden sm:table-row text-xl [&>th]:font-normal'>
-            <TableHead>{dictionary.savedLinksHeaders.name}</TableHead>
-            <TableHead>{dictionary.savedLinksHeaders.content}</TableHead>
-            <TableHead className='hidden sm:table-cell'>{dictionary.savedLinksHeaders.date}</TableHead>
-            <TableHead className='hidden sm:table-cell'>{dictionary.savedLinksHeaders.time}</TableHead>
-            <TableHead className='hidden sm:table-cell'>{dictionary.savedLinksHeaders.actions}</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {children}
-        </TableBody>
-      </Table>
-    </div>
+    <Table className='table-auto text-center w-full bg-zinc-600 rounded-xl text-slate-200'>
+      <TableHeader>
+        <TableRow className='hidden sm:table-row text-xl [&>th]:font-normal [&>th]:text-zinc-50 dark:[&>th]:text-zinc-50'>
+          <TableHead className='text-center'>{dictionary.savedLinksHeaders.name}</TableHead>
+          <TableHead className='text-center'>{dictionary.savedLinksHeaders.content}</TableHead>
+          <TableHead className='hidden text-center sm:table-cell'>{dictionary.savedLinksHeaders.date}</TableHead>
+          <TableHead className='hidden text-center sm:table-cell'>{dictionary.savedLinksHeaders.time}</TableHead>
+          <TableHead className='hidden text-center sm:table-cell' />
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {children}
+      </TableBody>
+    </Table>
   )
 }
 

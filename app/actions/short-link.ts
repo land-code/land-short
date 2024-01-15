@@ -21,20 +21,12 @@ const ShortLinkSchema = z.object({
 export const shortLink = async (prevState: FormState | undefined, formData: FormData): Promise<FormState | undefined> => {
   const language = formData.get('language') as Locale | null ?? 'en'
   const dictionary = await getDictionary(language)
+
   try {
     const supabase = createServerActionClient<Database>({ cookies })
     const longLink = formData.get('long-link')
     const code = formData.get('code')
     const result = ShortLinkSchema.parse({ name: code, content: longLink })
-    const { data: { session } } = await supabase
-      .auth
-      .getSession()
-    if (session === null) {
-      return {
-        ...prevState,
-        message: dictionary.sessionErrors.notSignedIn
-      }
-    }
     const { error } = await supabase
       .from('short_codes')
       .insert({
@@ -46,6 +38,12 @@ export const shortLink = async (prevState: FormState | undefined, formData: Form
       return {
         ...prevState,
         message: dictionary.shortLinkErrors.codeNotUnique
+      }
+    }
+    if (error?.code === '42501') {
+      return {
+        ...prevState,
+        message: dictionary.sessionErrors.notSignedIn
       }
     }
     if (error !== null) {
