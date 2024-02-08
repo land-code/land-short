@@ -9,6 +9,14 @@
       "label": "Enlace corto:",
       "placeholder": "Introduce tu enlace corto"
     },
+    "protection": {
+      "label": "Protección: ",
+      "placeholder": "Elige tu método de protección",
+      "options": {
+        "public": "Público",
+        "private": "Privado"
+      }
+    },
     "submit": {
       "default": "Guardar",
       "pending": "Guardando..."

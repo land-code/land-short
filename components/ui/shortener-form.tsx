@@ -3,7 +3,7 @@
 import { shortLink } from '../../app/actions/short-link'
 import { useFormState, useFormStatus } from 'react-dom'
 import AddLink from '../../app/icons/add_link'
-import { BASE_URL } from '../../app/lib/consts'
+import { BASE_URL, protectionOptions } from '../../app/lib/consts'
 import Button from './button'
 import { ReactNode } from 'react'
 
@@ -43,6 +43,14 @@ export default function ShortenerForm ({
       label: string
       placeholder: string
     }
+    protection: {
+      label: string
+      placeholder: string
+      options: {
+        public: string
+        private: string
+      }
+    }
     submit: {
       default: string
       pending: string
@@ -70,10 +78,17 @@ export default function ShortenerForm ({
           <span className='w-max text-zinc-300'>{BASE_URL}</span>
           <input autoComplete='off' required name='code' className='flex-grow p-2 rounded-xl bg-zinc-600 text-zinc-200 dark:bg-zinc-800' placeholder={dictionary.code.placeholder} />
         </div>
-        <input autoComplete='off' readOnly className='hidden' type='text' name='language' value={language} />
-        <input autoComplete='off' readOnly className='hidden' type='text' name='username' value={userId} />
-        <input autoComplete='off' readOnly className='hidden' type='text' name='page' value={page} />
       </label>
+      <label className='flex w-full gap-4 items-center'>
+        {dictionary.protection.label}
+        <select required name='protection' className='p-2 rounded-xl bg-zinc-600 text-zinc-200 flex-1 dark:bg-zinc-800'>
+          <option value={protectionOptions[0]}>{dictionary.protection.options.public}</option>
+          <option value={protectionOptions[1]}>{dictionary.protection.options.private}</option>
+        </select>
+      </label>
+      <input autoComplete='off' readOnly hidden type='text' name='language' value={language} />
+      <input autoComplete='off' readOnly hidden type='text' name='username' value={userId} />
+      <input autoComplete='off' readOnly hidden type='text' name='page' value={page} />
       <SubmitButton dictionary={dictionary.submit} />
       <p className='text-red-300'>{state?.message}</p>
       {(state?.link !== null && state?.link !== '') &&

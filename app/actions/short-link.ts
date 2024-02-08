@@ -7,6 +7,7 @@ import { isValidUrl } from '@/app/lib/is-valid-url'
 import { getDictionary } from '../get-dictionary'
 import { Locale } from '../i18n-config'
 import { z } from 'zod'
+import { protectionOptions } from '../lib/consts'
 
 interface FormState {
   message?: string | null
@@ -15,7 +16,8 @@ interface FormState {
 
 const ShortLinkSchema = z.object({
   name: z.string().min(1),
-  content: z.string().min(1)
+  content: z.string().min(1),
+  protection: z.enum(protectionOptions)
 })
 
 export const shortLink = async (prevState: FormState | undefined, formData: FormData): Promise<FormState | undefined> => {
@@ -24,9 +26,16 @@ export const shortLink = async (prevState: FormState | undefined, formData: Form
 
   try {
     const supabase = createServerActionClient<Database>({ cookies })
-    const longLink = formData.get('long-link')
-    const code = formData.get('code')
-    const result = ShortLinkSchema.parse({ name: code, content: longLink })
+
+    const name = formData.get('code') as string | null
+    const content = formData.get('long-link') as string | null
+    const protection = formData.get('protection') as string | null
+    const result = ShortLinkSchema.parse({
+      name,
+      content,
+      protection
+    })
+
     const { error } = await supabase
       .from('short_codes')
       .insert({
@@ -34,6 +43,7 @@ export const shortLink = async (prevState: FormState | undefined, formData: Form
         is_url: isValidUrl(result.content),
         name: result.name
       })
+
     if (error?.code === '23505') {
       return {
         ...prevState,
