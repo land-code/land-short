@@ -41,7 +41,8 @@ export const shortLink = async (prevState: FormState | undefined, formData: Form
       .insert({
         content: result.content,
         is_url: isValidUrl(result.content),
-        name: result.name
+        name: result.name,
+        protection: result.protection
       })
 
     if (error?.code === '23505') {
