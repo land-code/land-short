@@ -31,7 +31,7 @@ const ShortLinksContainer = ({
           <TableHead className='text-center'>{dictionary.savedLinksHeaders.content}</TableHead>
           <TableHead className='hidden text-center sm:table-cell'>{dictionary.savedLinksHeaders.date}</TableHead>
           <TableHead className='hidden text-center sm:table-cell'>{dictionary.savedLinksHeaders.time}</TableHead>
-          <TableHead className='hidden text-center sm:table-cell' />
+          <TableHead className='hidden text-center sm:table-cell'>{dictionary.savedLinksHeaders.actions}</TableHead>
         </TableRow>
       </TableHeader>
       <TableBody>

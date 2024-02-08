@@ -86,6 +86,7 @@ const RealtimeShortCodes = ({
                   />
                 </TableCell>
               )}
+              <TableCell />
             </TableRow>
           )
         }
