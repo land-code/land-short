@@ -1,7 +1,7 @@
 import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import { cookies } from 'next/headers'
 import { Database } from '@/database.types'
-import { Locale } from '../../app/i18n-config'
+import { Locale } from '../app/i18n-config'
 import RealtimeShortCodes from './realtime-short-links'
 
 export default async function ShortLinks ({

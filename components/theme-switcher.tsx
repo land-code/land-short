@@ -1,8 +1,8 @@
 'use client'
 
-import Button from './button'
-import DarkMode from '../../app/icons/dark_mode'
-import LightMode from '../../app/icons/light_mode'
+import Button from './ui/button'
+import DarkMode from '../app/icons/dark_mode'
+import LightMode from '../app/icons/light_mode'
 import { ReactNode, useEffect, useState } from 'react'
 import { useTheme } from 'next-themes'
 

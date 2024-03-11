@@ -1,7 +1,7 @@
 'use client'
 
-import { useToast } from '../../app/lib/use-toast'
-import Button from './button'
+import { useToast } from '../app/lib/use-toast'
+import Button from './ui/button'
 
 export default function LinkToCopy ({
   isUrl,

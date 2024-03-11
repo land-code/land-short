@@ -1,4 +1,4 @@
-import LoginForm from '@/components/ui/login-form'
+import LoginForm from '@/components/login-form'
 import { getDictionary } from '@/app/get-dictionary'
 import { Locale } from '@/app/i18n-config'
 import { Typography } from '@/components/ui/typography'

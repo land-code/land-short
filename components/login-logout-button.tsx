@@ -4,7 +4,7 @@ import { cookies } from 'next/headers'
 import { logout } from '@/app/actions/logout'
 import Login from '@/app/icons/login'
 import Logout from '@/app/icons/logout'
-import Button from './button'
+import Button from './ui/button'
 
 const LoginLogoutButton = async ({ dictionary }: {
   dictionary: {

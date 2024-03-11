@@ -2,7 +2,7 @@
 
 import Button, { buttonStyles } from './ui/button'
 import { Dialog, DialogContent } from './ui/dialog'
-import ShortenerForm from './ui/shortener-form'
+import ShortenerForm from './shortener-form'
 import { Dictionary } from '@/app/get-dictionary'
 import { Locale } from '@/app/i18n-config'
 import { DialogTrigger } from '@radix-ui/react-dialog'

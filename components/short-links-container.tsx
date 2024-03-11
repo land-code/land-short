@@ -1,5 +1,5 @@
 import { Table, TableBody, TableHead, TableHeader, TableRow } from '@/components/ui/table'
-import { Locale } from '../../app/i18n-config'
+import { Locale } from '../app/i18n-config'
 
 interface ShortLinksContainerProps {
   children: React.ReactNode
