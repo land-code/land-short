@@ -9,6 +9,7 @@ import ShortLinksContainer from '../../components/ui/short-links-container'
 import { Suspense } from 'react'
 import ShortLinksPlaceholder from '../../components/ui/short-links-placeholder'
 import { Typography } from '@/components/ui/typography'
+import Button from '@/components/ui/button'
 
 export default async function Home ({
   params: { lang }
@@ -25,7 +26,12 @@ export default async function Home ({
     <div className='flex flex-col items-center gap-4'>
       <section className='flex flex-col items-center w-full max-w-[800px]'>
         <Typography as='h2' className='mb-2'>{dictionary.saveLink}</Typography>
-        <ShortenerForm userId={user?.id ?? ''} dictionary={dictionary.saveLinkForm} language={lang} />
+        {user !== null
+          ? <ShortenerForm userId={user?.id ?? ''} dictionary={dictionary.saveLinkForm} language={lang} />
+          : <div className='bg-zinc-800 text-zinc-200 px-4 py-8 rounded-xl flex flex-col items-center gap-2 w-full dark:bg-zinc-600'>
+            <Typography as='p'>You must be logged in to save links</Typography>
+            <Button type='link' style='secondary' href='/login'>Login</Button>
+            </div>}
       </section>
       <section className='flex flex-col items-center w-full max-w-[800px]'>
         <Typography as='h2' className='mb-2'>{dictionary.savedLinks}</Typography>
