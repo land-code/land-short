@@ -8,6 +8,7 @@ import { createServerComponentClient } from '@supabase/auth-helpers-nextjs'
 import ShortLinksContainer from '../../components/ui/short-links-container'
 import { Suspense } from 'react'
 import ShortLinksPlaceholder from '../../components/ui/short-links-placeholder'
+import { Typography } from '@/components/ui/typography'
 
 export default async function Home ({
   params: { lang }
@@ -23,11 +24,11 @@ export default async function Home ({
   return (
     <div className='flex flex-col items-center gap-4'>
       <section className='flex flex-col items-center w-full max-w-[800px]'>
-        <h2 className='text-3xl mb-2'>{dictionary.saveLink}</h2>
+        <Typography as='h2' className='mb-2'>{dictionary.saveLink}</Typography>
         <ShortenerForm userId={user?.id ?? ''} dictionary={dictionary.saveLinkForm} language={lang} />
       </section>
       <section className='flex flex-col items-center w-full max-w-[800px]'>
-        <h2 className='text-3xl'>{dictionary.savedLinks}</h2>
+        <Typography as='h2' className='mb-2'>{dictionary.savedLinks}</Typography>
         <p className='text-zinc-600 dark:text-zinc-400 mb-2'>{dictionary.autoRefreshEnabled}</p>
         <ShortLinksContainer
           lang={lang}
